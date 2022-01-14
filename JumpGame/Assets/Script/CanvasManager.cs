@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.UI;
+
+
 [RequireComponent(typeof(Canvas))]
 public class CanvasManager : MonoBehaviour 
 {
     List<Image> clickImages;
     Canvas canvas;
+    GameObject player;
 
     private void Start()
     {
         clickImages = new List<Image>();
         canvas = GetComponent<Canvas>();
+        player = GameObject.Find("Player");
 
         var ob = transform.Find("Click_Button_Color");
         for(var i=0;i<ob.childCount;i++)
@@ -57,8 +60,13 @@ public class CanvasManager : MonoBehaviour
 
     void ClickEnter()
     {
+        //clear ClickImages
         foreach (var ob in clickImages)
         {
+            if(ob.color == Color.clear)
+                continue;
+
+            player.GetComponent<SpriteRenderer>().color = ob.color;
             ob.color = Color.clear;
         }
     }

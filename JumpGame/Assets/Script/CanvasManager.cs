@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 [RequireComponent(typeof(Canvas))]
 public class CanvasManager : MonoBehaviour 
 {
     List<Image> clickImages;
     Canvas canvas;
     GameObject player;
+    Transform buttonImage;
 
     private void Start()
     {
+        player = GameObject.Find("Player");
         clickImages = new List<Image>();
         canvas = GetComponent<Canvas>();
-        player = GameObject.Find("Player");
-
-        var ob = transform.Find("Click_Button_Color");
-        for(var i=0;i<ob.childCount;i++)
+        buttonImage = transform.Find("Click_Button_Color");
+        foreach(Transform T in buttonImage.transform)
         {
-            clickImages.Add(ob.GetChild(i).GetComponent<Image>());
+            clickImages.Add(T.GetComponent<Image>());
         }
     }
 
@@ -50,7 +49,7 @@ public class CanvasManager : MonoBehaviour
     {
         foreach(var ob in clickImages)
         {
-            if(ob.color == Color.clear)
+            if(ob.color.Equals(Color.clear))
             {
                 ob.color = color;
                 return;
@@ -63,11 +62,12 @@ public class CanvasManager : MonoBehaviour
         //clear ClickImages
         foreach (var ob in clickImages)
         {
-            if(ob.color == Color.clear)
+            if(ob.color.Equals(Color.clear))
                 continue;
 
             player.GetComponent<SpriteRenderer>().color = ob.color;
             ob.color = Color.clear;
+            
         }
     }
 }

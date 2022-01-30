@@ -3,43 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using System;
 
 public class GameManager : MonoBehaviour
 {
-    static GameManager instance = null;
-    Player player;
+    public string scoreTextPath = "Assets/Rank/test.txt";
+    public int Max;
     public int level;
     int highScore; //files read
     int score;
     bool end;
-    public bool levelUp;
+    bool levelUp;
+    bool gameStart;
+    GameObject inGameCanvas;
+    GameObject endGameCanvas;
+    GameObject tiles;
+    Player player;
+    AudioSource audio;
     Color[] dieColor = new Color[2]; // 0 : player 1:tile
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else { Destroy(gameObject); }
-    }
-
     private void Start()
-    {
-        player = GameObject.Find("Player").GetComponent<Player>();
-
+    {  
+        //if(!File.Exists(scoreTextPath))
+        //{
+        //    FileStream test = new FileStream(scoreTextPath, FileMode.Create);
+        //    test.Close();
+        //}
+        //SetMaxScore();
+        audio = GetComponent<AudioSource>();
+        audio.Stop();
         level = 1;
         end = false;
         levelUp = false;
-        string path = "Assets/Rank/test.txt";
-        FileStream test = new FileStream(path, FileMode.Create);
-        test.Close();
+        audio.Play();
+        player = GameObject.Find("Player").GetComponent<Player>();
+        inGameCanvas = GameObject.Find("InGameCanvas");
+        tiles = GameObject.Find("Tiles");
+
+        endGameCanvas = GameObject.Find("EndGameCanvas");
+        endGameCanvas.SetActive(false);
     }
 
     private void Update()
     {
-        if (end) return;
+        if (end ) return;
 
         //playing
         int playScore = player.GetScore();
@@ -50,15 +57,20 @@ public class GameManager : MonoBehaviour
         }
 
         if (playScore % 10 == 1 && levelUp)
+        {
             levelUp = false;
+            player.ReduceMaxJumpCount();
+        }
+            
 
-
-        //end
+        //end   
         if(player.GetDie() && !end)
         {
             end = true;
             SetiingEndInformation();
-            SceneManager.LoadScene("EndScenes");
+            audio.Stop();
+
+            Invoke(nameof(StartEndScene), 1.5f);
         }
     }
 
@@ -69,6 +81,44 @@ public class GameManager : MonoBehaviour
         score = player.GetScore();
     }
 
+    public void StartEndScene()
+    {
+        player.gameObject.SetActive(false);
+        tiles.SetActive(false);
+     //   WriteScore();
+        
+        inGameCanvas.SetActive(false);
+        endGameCanvas.SetActive(true);
+        
+    }
+
+    void SetMaxScore()
+    {
+        StreamReader sr = File.OpenText(scoreTextPath);
+        string maxScore = sr.ReadLine();
+        sr.Close();
+        if (maxScore == null)
+        {
+            StreamWriter sw = File.CreateText(scoreTextPath);
+            sw.WriteLine("0");
+            maxScore = "0";
+            sw.Close();
+        }
+
+        Max = Convert.ToInt32(maxScore);
+    }
+
+    void WriteScore()
+    {
+        if (Max < score)
+        {
+            Max = score;
+            StreamWriter sw = File.CreateText(scoreTextPath);
+            sw.WriteLine(score.ToString());
+            sw.Close();
+        }
+        
+    }
 
     public Color[] GetDieReason()
     {

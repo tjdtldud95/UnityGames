@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     int jumpCount;
     int maxJumpCount;
     int score;
-    public int tilesIndex;
+    int tilesIndex;
     float jumpPower;
     bool isMove;
     bool die;
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
             SetNextPos();
         }
 
-        if(jumpCount== maxJumpCount)
+        if(jumpCount >= maxJumpCount)
         {
             jumpCount = 0;
             isMove = true;
@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
         
         
         var ob = collision.transform.GetComponent<SpriteRenderer>();
+        
         if(playerRenderer.color != (ob.color))
         {  
             PlaySound("Fail");
@@ -123,7 +124,7 @@ public class Player : MonoBehaviour
             return;
         }
         
-
+        
     Jump:
         PlaySound("Jump");
         rb.AddForce(Vector2.up * jumpPower);
@@ -146,13 +147,13 @@ public class Player : MonoBehaviour
 
     public void ReduceMaxJumpCount()
     {
-        if (maxJumpCount <= 0)
+        maxJumpCount--;
+
+        if (maxJumpCount < 0)
         {
-            maxJumpCount = 1;
+            maxJumpCount = 0;
             return;
         }
-
-        maxJumpCount--;
     }
 
     public bool GetDie()

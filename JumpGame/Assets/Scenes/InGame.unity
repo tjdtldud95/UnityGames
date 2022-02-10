@@ -1086,6 +1086,7 @@ MonoBehaviour:
   scoreTextPath: Assets/Rank/test.txt
   Max: 0
   level: 0
+  levelScore: 0a000000140000003200000046000000
 --- !u!4 &446973318
 Transform:
   m_ObjectHideFlags: 0
@@ -1238,7 +1239,6 @@ MonoBehaviour:
   audioJump: {fileID: 8300000, guid: f7a82f58d9464ee48a6359c0b73bbcf9, type: 3}
   audioFail: {fileID: 8300000, guid: c250be8a39e27e94eb87e5ef76e6a81e, type: 3}
   nextPos: {x: 0, y: 0}
-  tilesIndex: 0
 --- !u!82 &508776305
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2760,7 +2760,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 384, y: 509.00003}
-  m_SizeDelta: {x: 203.74, y: 200}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156960628
 MonoBehaviour:
@@ -3273,8 +3273,8 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 1
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

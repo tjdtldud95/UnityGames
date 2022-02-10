@@ -162,7 +162,7 @@ public class TilesManager : MonoBehaviour
 
     UseColor GetRandomlyColorByLevel()
     {
-        int level =gm.level;
+        int level =gm.level+1;
         UseColor value = 0;
         switch(level)
         {

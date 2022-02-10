@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public string scoreTextPath = "Assets/Rank/test.txt";
     public int Max;
     public int level;
+    public int[] levelScore = { 10, 20, 50, 70 };
     int highScore; //files read
     int score;
     bool end;
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
         //SetMaxScore();
         audio = GetComponent<AudioSource>();
         audio.Stop();
-        level = 1;
+        level = 0;
         end = false;
         levelUp = false;
         audio.Play();
@@ -48,20 +49,25 @@ public class GameManager : MonoBehaviour
     {
         if (end ) return;
 
+        if (level > 3)
+            goto end;
+        
         //playing
         int playScore = player.GetScore();
-        if (playScore % 10 == 0 && playScore != 0 && !levelUp)
+        if (playScore == levelScore[level] && playScore != 0 && !levelUp)
         {
             levelUp = true;
             level++;
         }
 
-        if (playScore % 10 == 1 && levelUp)
+        if (levelUp)
         {
             levelUp = false;
             player.ReduceMaxJumpCount();
         }
-            
+      
+end:
+
 
         //end   
         if(player.GetDie() && !end)
@@ -85,7 +91,7 @@ public class GameManager : MonoBehaviour
     {
         player.gameObject.SetActive(false);
         tiles.SetActive(false);
-     //   WriteScore();
+
         
         inGameCanvas.SetActive(false);
         endGameCanvas.SetActive(true);

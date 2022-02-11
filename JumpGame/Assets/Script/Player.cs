@@ -7,12 +7,13 @@ public class Player : MonoBehaviour
 {
     public AudioClip audioJump;
     public AudioClip audioFail;
+    public PlayerData data;
     AudioSource audioSource;
     CameraMove cameraMove;
     TilesManager tiles;
     Rigidbody2D rb;
     SpriteRenderer playerRenderer;
-    public Vector2 nextPos;
+    Vector2 nextPos;
     Vector2 curuntPos;
     Color tileColor;
     int jumpCount;
@@ -120,6 +121,8 @@ public class Player : MonoBehaviour
             ob.transform.GetComponent<Tile>().StartDieAnimation();
             rb.bodyType = RigidbodyType2D.Kinematic;
             tileColor = ob.color;
+
+            SaveScore();
             die = true;
             return;
         }
@@ -130,6 +133,12 @@ public class Player : MonoBehaviour
         rb.AddForce(Vector2.up * jumpPower);
     }
 
+
+    void SaveScore()
+    {
+        var dataInfo = Resources.Load<GameObject>("PlayerInfo").GetComponent<PlayerData>();
+        dataInfo.SetScore(score-1);
+    }
 
     void PlaySound(string action)
     {

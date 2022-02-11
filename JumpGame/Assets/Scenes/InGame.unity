@@ -1238,7 +1238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioJump: {fileID: 8300000, guid: f7a82f58d9464ee48a6359c0b73bbcf9, type: 3}
   audioFail: {fileID: 8300000, guid: c250be8a39e27e94eb87e5ef76e6a81e, type: 3}
-  nextPos: {x: 0, y: 0}
+  data: {fileID: 1691180754237731015, guid: f57556211884a1a4689ed301a05c027f, type: 3}
 --- !u!82 &508776305
 AudioSource:
   m_ObjectHideFlags: 0

@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public int Max;
     public int level;
     public int[] levelScore = { 10, 20, 50, 70 };
-    int highScore; //files read
     int score;
     bool end;
     bool levelUp;
@@ -25,12 +24,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {  
-        //if(!File.Exists(scoreTextPath))
-        //{
-        //    FileStream test = new FileStream(scoreTextPath, FileMode.Create);
-        //    test.Close();
-        //}
-        //SetMaxScore();
         audio = GetComponent<AudioSource>();
         audio.Stop();
         level = 0;
@@ -95,34 +88,6 @@ end:
         
         inGameCanvas.SetActive(false);
         endGameCanvas.SetActive(true);
-        
-    }
-
-    void SetMaxScore()
-    {
-        StreamReader sr = File.OpenText(scoreTextPath);
-        string maxScore = sr.ReadLine();
-        sr.Close();
-        if (maxScore == null)
-        {
-            StreamWriter sw = File.CreateText(scoreTextPath);
-            sw.WriteLine("0");
-            maxScore = "0";
-            sw.Close();
-        }
-
-        Max = Convert.ToInt32(maxScore);
-    }
-
-    void WriteScore()
-    {
-        if (Max < score)
-        {
-            Max = score;
-            StreamWriter sw = File.CreateText(scoreTextPath);
-            sw.WriteLine(score.ToString());
-            sw.Close();
-        }
         
     }
 

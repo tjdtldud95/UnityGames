@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class EndCanavas : MonoBehaviour
 {
-    Transform playerColor;
-    TextMeshProUGUI scoreText;
+    public Transform playerColor;
+    public TextMeshProUGUI scoreText;
+    public Image reason;
+    public GameManager gm;
     Color[] dieColor;
     int score;
     List<Image> answers;
-    Image reason;
     private void Awake()
     {
         answers = new List<Image>();        
@@ -20,12 +21,8 @@ public class EndCanavas : MonoBehaviour
     {
         dieColor = new Color[2]; // 0 : player 1:tile
 
-        scoreText = transform.Find("Score_int").GetComponent<TextMeshProUGUI>();
-        playerColor = transform.Find("PlayerDieReason");
-        reason = transform.Find("Reason").GetComponent<Image>();
-
-        dieColor = GameObject.Find("GameManager").GetComponent<GameManager>().GetDieReason();
-        score = GameObject.Find("GameManager").GetComponent<GameManager>().GetPlayerScore();
+        dieColor = gm.GetDieReason();
+        score =gm.GetPlayerScore();
          
         int i = 0;
         foreach(Transform T in playerColor.transform)
@@ -132,5 +129,10 @@ public class EndCanavas : MonoBehaviour
     public void ReStartGame()
     {
         SceneManager.LoadScene("OutGame");
+    }
+
+    public void SystemDown()
+    {
+        Application.Quit();
     }
 }

@@ -8,45 +8,29 @@ public class Player : MonoBehaviour
     public AudioClip audioJump;
     public AudioClip audioFail;
     public PlayerData data;
+    public TilesManager tiles;
+    public CameraMove cameraMove;
     AudioSource audioSource;
-    CameraMove cameraMove;
-    TilesManager tiles;
     Rigidbody2D rb;
     SpriteRenderer playerRenderer;
     Vector2 nextPos;
     Vector2 curuntPos;
+    Vector2 velo = Vector2.up * 5f;
     Color tileColor;
-    int jumpCount;
-    int maxJumpCount;
-    int score;
-    int tilesIndex;
-    float jumpPower;
+    int jumpCount = 0;
+    int maxJumpCount = 4;
+    int score = 0;
+    int tilesIndex = 0;
+    float jumpPower = 200f;
     bool isMove;
     bool die;
 
-    private void Awake()
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
-        tiles = GameObject.Find("Tiles").GetComponent<TilesManager>();
-        cameraMove = Camera.main.GetComponent<CameraMove>();
         playerRenderer = transform.GetComponent<SpriteRenderer>();
         rb.bodyType = RigidbodyType2D.Dynamic;
-    }
-
-
-    private void Start()
-    {
-        tilesIndex = 0;
-        jumpCount = 0;
-        jumpPower = 200f;
-        score = 0;
-        isMove = false;
-        die = false;
-        nextPos = Vector2.zero;
-        curuntPos = Vector2.zero;
-        tileColor = Color.clear;
-        maxJumpCount = 4;
         SetNextPos();
     }
 
@@ -56,12 +40,7 @@ public class Player : MonoBehaviour
 
         if (isMove)
         {
-            Vector2 velo = Vector2.up*5f;
-            if (nextPos.x < 0) velo += Vector2.left*0.7f;
-            else velo += Vector2.right * 0.7f;
-
-            transform.position = Vector2.SmoothDamp(transform.position,nextPos, ref velo , 0.1f);
-     
+            transform.position = Vector2.Lerp(transform.position, nextPos + Vector2.up*0.625f, 0.1f);
         }
     }
 
@@ -91,7 +70,7 @@ public class Player : MonoBehaviour
         {
             jumpCount = 0;
             isMove = true;
-            if(collision.transform.CompareTag("Respawn"))
+            if (collision.gameObject.layer.Equals(3))
             {
                 collision.gameObject.SetActive(false);
             }
@@ -136,8 +115,7 @@ public class Player : MonoBehaviour
 
     void SaveScore()
     {
-        var dataInfo = Resources.Load<GameObject>("PlayerInfo").GetComponent<PlayerData>();
-        dataInfo.SetScore(score-1);
+        PlayerData.instance.SetScore(score-1);
     }
 
     void PlaySound(string action)

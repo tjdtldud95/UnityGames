@@ -23,11 +23,4 @@ public class MyColor : MonoBehaviour
 
     public static List<Color> colors = new List<Color>{ R, G, B,RB,RG,GB,RGB,RRB,RRG,BBG,BGG,RBB };
 
-    private void Start()
-    {
-        for(int i=0;i<colors.Count;i++)
-        {
-            Debug.Log(i + " : " + colors[i]);
-        }
-    }
 }

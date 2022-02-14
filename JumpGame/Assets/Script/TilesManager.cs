@@ -21,19 +21,15 @@ public class TilesManager : MonoBehaviour
         BGG,
         RBB
     }
-    List<Transform> tilePos;
-    public List<SpriteRenderer> tileColor;
-    GameManager gm;
-    Vector3 upPos;
-    bool firstRePos;
+    public GameManager gm;
+    Vector3 upPos = Vector3.up * 10.5f;
+    bool firstRePos = false;
+    List<Transform> tilePos = new List<Transform>();
+    List<SpriteRenderer> tileColor = new List<SpriteRenderer>();
 
     // Start is called before the first frame update
     void Awake()
     {
-        tilePos = new List<Transform>();
-        tileColor = new List<SpriteRenderer>();
-        firstRePos = false;
-        upPos = Vector3.up * 10.5f;
         foreach (Transform T in transform)
         {
             tilePos.Add(T);
@@ -43,7 +39,6 @@ public class TilesManager : MonoBehaviour
 
     private void Start()
     {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         ColoringTile();
     }
     void RePositionandColoringTile(int index)

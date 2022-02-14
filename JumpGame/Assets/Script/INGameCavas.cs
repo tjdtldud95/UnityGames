@@ -5,12 +5,12 @@ using UnityEngine.UI;
 using TMPro;
 public class INGameCavas : MonoBehaviour 
 {
+    public Player player;
+    public Transform buttonImage;
+    public SpriteRenderer playerRenderer;
+    public TextMeshProUGUI scoreText;
+    public Image enter;
     List<Image> clickImages;
-    Player player;
-    Transform buttonImage;
-    SpriteRenderer playerRenderer;
-    TextMeshProUGUI scoreText;
-    Image enter;
     Color enterColor;
     bool end;
     int[] clickCount = { 0, 0, 0 }; //R G B 
@@ -20,18 +20,13 @@ public class INGameCavas : MonoBehaviour
         end = false;
         clickImages = new List<Image>();
         enterColor = Color.clear;
-        playerRenderer = GameObject.Find("Player").GetComponent<SpriteRenderer>();
-        player = GameObject.Find("Player").GetComponent<Player>();
-        buttonImage = transform.Find("Click_Button_Color");
-        scoreText = transform.Find("Score_int").GetComponent<TextMeshProUGUI>();
-        enter = transform.Find("Enter").GetComponent<Image>();
 
         foreach (Transform T in buttonImage.transform)
         {
             clickImages.Add(T.GetComponent<Image>());
         }
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (end) return;
         if(player.GetDie())

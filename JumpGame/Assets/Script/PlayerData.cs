@@ -4,16 +4,38 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    public int maxScore = 0;
+    int maxScore;
+    public static PlayerData instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        else
+            Destroy(gameObject);
+    }
+
+    //private void Start()
+    //{
+    //    PlayerPrefs.Save();
+    //}
+
     public void SetScore(int score)
     {
-        if (maxScore > score) return;
+        if (PlayerPrefs.GetInt("maxScore") > score) return;
 
-        maxScore = score;
+        PlayerPrefs.SetInt("maxScore", score);
+        PlayerPrefs.Save();
     }
 
     public int GetScore()
     {
-        return maxScore; 
+        return PlayerPrefs.GetInt("maxScore"); 
     }
+
+
+
 }

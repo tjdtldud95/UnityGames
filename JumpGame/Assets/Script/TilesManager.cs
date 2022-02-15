@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,8 +23,10 @@ public class TilesManager : MonoBehaviour
         RBB
     }
     public GameManager gm;
+    public Transform stars;
     Vector3 upPos = Vector3.up * 10.5f;
     bool firstRePos = false;
+    bool isStar = false;
     List<Transform> tilePos = new List<Transform>();
     List<SpriteRenderer> tileColor = new List<SpriteRenderer>();
 
@@ -56,7 +59,7 @@ public class TilesManager : MonoBehaviour
     void ColoringTile()
     {
         UseColor tile;
-        int i = 0;
+        int i = 0;      
         foreach(var ob in tileColor)
         {
             tile = GetRandomlyColorByLevel();
@@ -109,6 +112,13 @@ public class TilesManager : MonoBehaviour
 
     void ColoringTile(int index)
     {
+        int tmp = (int)Random.Range(0, 100);
+        bool isStar = false;
+        if (tmp <=5)
+        {
+            isStar = true;
+        }
+
         UseColor tile = GetRandomlyColorByLevel();
         switch (tile)
         {
@@ -151,6 +161,24 @@ public class TilesManager : MonoBehaviour
             case UseColor.RBB:
                 tileColor[index].color = MyColor.RBB;
                 break;
+        }
+
+
+        if(isStar)
+        {
+            Transform ob;
+            try
+            {
+                ob = stars.transform.GetChild(0);
+            }
+            catch(UnityException)
+            {
+                return;
+            }
+            Vector3 move = tilePos[index].position + upPos+Vector3.up;
+            ob.SetParent(null);
+            ob.position = move;
+            ob.gameObject.SetActive(true);
         }
     }
 

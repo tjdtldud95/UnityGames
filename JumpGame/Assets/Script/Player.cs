@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    static int AnimationPlayCount;
     public AudioClip audioJump;
     public AudioClip audioFail;
     public PlayerData data;
@@ -24,7 +25,8 @@ public class Player : MonoBehaviour
     float jumpPower = 200f;
     bool isMove;
     bool die;
-
+    bool shiledTime;
+   public bool[] shiled = new bool[3];
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -70,6 +72,8 @@ public class Player : MonoBehaviour
         {
             jumpCount = 0;
             isMove = true;
+            if (shiledTime) shiledTime = false;
+
             if (collision.gameObject.layer.Equals(3))
             {
                 collision.gameObject.SetActive(false);
@@ -81,21 +85,52 @@ public class Player : MonoBehaviour
         jumpCount++;
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 8)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (shiled[i] == false)
+                {
+                    shiled[i] = true;
+                    break;
+                }
+            }
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (die ) return;
 
 
-        if (collision.transform.CompareTag("Respawn"))
+        if (collision.transform.CompareTag("Respawn") || shiledTime)
         {
             goto Jump;
         }
-        
-        
+
+       
         var ob = collision.transform.GetComponent<SpriteRenderer>();
-        
-        if(playerRenderer.color != (ob.color))
-        {  
+
+        if (playerRenderer.color != (ob.color))
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (shiled[i] == true)
+                {
+                    shiledTime = true;
+                    shiled[i] = false;
+                    break;
+                }
+            }
+
+            if (shiledTime)
+            {
+                InvokeRepeating("Damage", 0.3f, 0.2f);
+                goto Jump;
+            }
             PlaySound("Fail");
             ob.transform.GetComponent<Tile>().StartDieAnimation();
             rb.bodyType = RigidbodyType2D.Kinematic;
@@ -112,10 +147,27 @@ public class Player : MonoBehaviour
         rb.AddForce(Vector2.up * jumpPower);
     }
 
-
     void SaveScore()
     {
         PlayerData.instance.SetScore(score-1);
+    }
+
+    void Damage()
+    {
+        if (AnimationPlayCount > 4)
+        {
+           
+            CancelInvoke("Damage");
+            AnimationPlayCount = 0;
+        }
+
+
+        if (gameObject.activeSelf == true)
+            gameObject.SetActive(false);
+        else
+            gameObject.SetActive(true);
+
+        AnimationPlayCount++;
     }
 
     void PlaySound(string action)

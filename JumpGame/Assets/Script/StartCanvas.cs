@@ -15,6 +15,12 @@ public class StartCanvas : MonoBehaviour
 
         ob.text = score;
     }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+            SystemDown();
+    }
     public void GoInScene()
     {
         SceneManager.LoadScene("InGame");

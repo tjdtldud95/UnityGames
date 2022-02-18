@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
 
         if (isMove)
         {
-            transform.position = Vector2.Lerp(transform.position, nextPos + Vector2.up*0.625f, 0.1f);
+            transform.position = Vector2.Lerp(transform.position, nextPos + Vector2.up*1.725f, 0.1f);
         }
     }
 

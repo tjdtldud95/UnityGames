@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    static int AnimationPlayCount;
     public AudioClip audioJump;
     public AudioClip audioFail;
     public PlayerData data;
@@ -22,11 +21,12 @@ public class Player : MonoBehaviour
     int maxJumpCount = 4;
     int score = 0;
     int tilesIndex = 0;
+    public int AnimationPlayCount = 0;
     float jumpPower = 200f;
     bool isMove;
     bool die;
     bool shiledTime;
-   public bool[] shiled = new bool[3];
+    bool[] shiled = new bool[3];
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -40,9 +40,12 @@ public class Player : MonoBehaviour
     {
         if (die) return;
 
+
+        
+
         if (isMove)
         {
-            transform.position = Vector2.Lerp(transform.position, nextPos + Vector2.up*1.725f, 0.1f);
+            transform.position = Vector2.Lerp(transform.position, nextPos + Vector2.up, 0.1f);
         }
     }
 
@@ -105,6 +108,7 @@ public class Player : MonoBehaviour
     {
         if (die ) return;
 
+        if (gameObject.activeSelf == false) gameObject.SetActive(true);
 
         if (collision.transform.CompareTag("Respawn") || shiledTime)
         {
@@ -141,7 +145,7 @@ public class Player : MonoBehaviour
             return;
         }
         
-        
+      
     Jump:
         PlaySound("Jump");
         rb.AddForce(Vector2.up * jumpPower);
@@ -154,13 +158,12 @@ public class Player : MonoBehaviour
 
     void Damage()
     {
-        if (AnimationPlayCount > 4)
+        if (AnimationPlayCount > 3)
         {
-           
             CancelInvoke("Damage");
             AnimationPlayCount = 0;
+            return;
         }
-
 
         if (gameObject.activeSelf == true)
             gameObject.SetActive(false);

@@ -29,12 +29,12 @@ public class INGameCavas : MonoBehaviour
     private void FixedUpdate()
     {
         if (end) return;
+
         if(player.GetDie())
         {
             end = true;
         }
         scoreText.text = player.GetScore().ToString();
-        ChangeEnterColor();
     }
 
     public void ClickButton(string buttonColor)
@@ -91,6 +91,7 @@ public class INGameCavas : MonoBehaviour
                 break;
             }
         }
+        ChangeEnterColor();
     }
     void ClickEnter()
     {

@@ -24,7 +24,9 @@ public class TilesManager : MonoBehaviour
     }
     public GameManager gm;
     public Transform stars;
-    Vector3 upPos = Vector3.up * 10.5f;
+    public int num = 0;
+    public int starCreateScore;
+    Vector3 upPos = Vector3.up * 15f;
     bool firstRePos = false;
     bool isStar = false;
     List<Transform> tilePos = new List<Transform>();
@@ -43,6 +45,7 @@ public class TilesManager : MonoBehaviour
     private void Start()
     {
         ColoringTile();
+        SetStarCreateScore();
     }
     void RePositionandColoringTile(int index)
     {
@@ -110,11 +113,33 @@ public class TilesManager : MonoBehaviour
 
     }
 
+    void SetStarCreateScore()
+    {
+        starCreateScore = (int)Random.Range(17, 25);
+    }
+   
+    void CreateStar(int index = -1)
+    {
+        Transform ob;
+        try
+        {
+            ob = stars.transform.GetChild(0);
+        }
+        catch (UnityException)
+        {
+            return;
+        }
+        Vector3 move = tilePos[index].position + upPos + Vector3.up;
+        ob.SetParent(null);
+        ob.position = move;
+        ob.gameObject.SetActive(true);
+        SetStarCreateScore();
+    }
+
     void ColoringTile(int index)
     {
-        int tmp = (int)Random.Range(0, 100);
         bool isStar = false;
-        if (tmp <=5)
+        if (num-1 >= starCreateScore)
         {
             isStar = true;
         }
@@ -166,19 +191,7 @@ public class TilesManager : MonoBehaviour
 
         if(isStar)
         {
-            Transform ob;
-            try
-            {
-                ob = stars.transform.GetChild(0);
-            }
-            catch(UnityException)
-            {
-                return;
-            }
-            Vector3 move = tilePos[index].position + upPos+Vector3.up;
-            ob.SetParent(null);
-            ob.position = move;
-            ob.gameObject.SetActive(true);
+            CreateStar(index);
         }
     }
 
@@ -229,6 +242,9 @@ public class TilesManager : MonoBehaviour
             }
 
         }
+
+        num++;
+        num %= 30;
         return tilePos[tileIndex].position;
     }
 

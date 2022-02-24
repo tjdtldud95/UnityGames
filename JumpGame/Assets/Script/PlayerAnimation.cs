@@ -9,12 +9,24 @@ public class PlayerAnimation : MonoBehaviour
     Rigidbody2D rb;
     public bool ready = false;
     public bool motioning = false;
-    public float asd;
-    public float aaa;
+    public bool jump;
+    public int size;
+    public int a = 0;
+    public bool hit;
+    public GameObject asd;
     private void Start()
     {
         ani = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        if(a>=10)
+        {
+            asd.SetActive(false);
+            ani.SetBool("Hit", true);
+        }
     }
 
     public void PlayReadyAnimation()
@@ -23,7 +35,7 @@ public class PlayerAnimation : MonoBehaviour
         ani.SetBool("Jump", false);
         ani.SetBool("Randing", false);
         ready = true;
-        motioning = true;
+       
     }
 
     public void PlayJumpAnimaition()
@@ -31,6 +43,9 @@ public class PlayerAnimation : MonoBehaviour
         ani.SetBool("Jump", true);
         ani.SetBool("Ready", false);
         ani.SetBool("Randing", false);
+
+        if(jump)
+            ani.SetBool("Randing", true);
     }
 
     public void PlayRandingAnimation()
@@ -39,7 +54,7 @@ public class PlayerAnimation : MonoBehaviour
         ani.SetBool("Ready", false);
         ani.SetBool("Jump", false);
         ready = false;
-        
+        motioning = true;
     }
 
     public void PlayHitAnimation()
@@ -69,42 +84,40 @@ public class PlayerAnimation : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        PlayingMotion();
-        PlayingJump();
-    }
-
-
-    void PlayingMotion()
-    {
-        if(ready)
+        if(size >=4)
         {
-            Debug.Log("Playing Land");
             PlayRandingAnimation();
+            PlayingJump();
+            size = 0;
             return;
         }
-        Debug.Log("Playing Ready");
+
         PlayReadyAnimation();
+        PlayingJump();
+        size++;
+        a++;
     }
+
 
     void PlayingJump()
     {
         StartCoroutine(nameof(Jump));
     }
 
-
     IEnumerator Jump()
     {
-        if(motioning)
+        if (motioning)
         {
             motioning = false;
-            yield return new WaitForSeconds(0.7f);
-            rb.AddForce(Vector2.up * 200f);
+            yield return new WaitForSeconds(0.45f);
+            rb.AddForce(Vector2.up * 400f);
         }
         else
         {
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.3f);
             rb.AddForce(Vector2.up * 200f);
         }
-      
+
     }
+
 }

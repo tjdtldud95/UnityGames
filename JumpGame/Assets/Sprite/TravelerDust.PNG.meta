@@ -342,7 +342,7 @@ TextureImporter:
         serializedVersion: 2
         x: 736
         y: 420
-        width: 45
+        width: 48
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -466,10 +466,10 @@ TextureImporter:
       name: TravelerDust_10
       rect:
         serializedVersion: 2
-        x: 703
-        y: 296
-        width: 99
-        height: 117
+        x: 708
+        y: 295
+        width: 100
+        height: 121
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -490,7 +490,7 @@ TextureImporter:
         x: 829
         y: 290
         width: 100
-        height: 117
+        height: 121
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

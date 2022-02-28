@@ -9,29 +9,29 @@ public class Player : MonoBehaviour
     public AudioClip audioFail;
     public PlayerData data;
     public TilesManager tiles;
-    public CameraMove cameraMove;
+    public SpriteRenderer body;
     AudioSource audioSource;
     Rigidbody2D rb;
-    SpriteRenderer playerRenderer;
+    PlayerAnimation playerAni;
     Vector2 nextPos;
     Vector2 curuntPos;
     Vector2 velo = Vector2.up * 5f;
     Color tileColor;
-    int jumpCount = 0;
-    int maxJumpCount = 4;
+    public int jumpCount = 0;
+    public int maxJumpCount = 4;
     int score = 0;
     int tilesIndex = 0;
-    public int AnimationPlayCount = 0;
-    float jumpPower = 200f;
+    int AnimationPlayCount = 0;
     bool isMove;
     bool die;
     bool shiledTime;
+    public bool randing;
     bool[] shiled = new bool[3];
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
-        playerRenderer = transform.GetComponent<SpriteRenderer>();
+        playerAni = GetComponent<PlayerAnimation>();
         rb.bodyType = RigidbodyType2D.Dynamic;
         SetNextPos();
     }
@@ -39,9 +39,6 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         if (die) return;
-
-
-        
 
         if (isMove)
         {
@@ -53,7 +50,6 @@ public class Player : MonoBehaviour
     { 
         score++;
         curuntPos = nextPos;
-        cameraMove.SetCameraPosY(curuntPos.y);
         nextPos =tiles.GetTilesPos(tilesIndex++)+ Vector2.up;
         tilesIndex %= 6;
     }
@@ -71,20 +67,22 @@ public class Player : MonoBehaviour
             SetNextPos();
         }
 
-        if(jumpCount >= maxJumpCount)
+        if (jumpCount >= maxJumpCount)
         {
-            jumpCount = 0;
+            jumpCount = -1;
             isMove = true;
+
             if (shiledTime) shiledTime = false;
 
             if (collision.gameObject.layer.Equals(3))
             {
                 collision.gameObject.SetActive(false);
             }
-
-            return;
         }
 
+        playerAni.PlayJumpAnimaition();
+        
+        PlaySound("Jump");
         jumpCount++;
     }
 
@@ -110,15 +108,16 @@ public class Player : MonoBehaviour
 
         if (gameObject.activeSelf == false) gameObject.SetActive(true);
 
+        if(jumpCount == maxJumpCount) randing = true;
+
         if (collision.transform.CompareTag("Respawn") || shiledTime)
         {
             goto Jump;
         }
 
-       
         var ob = collision.transform.GetComponent<SpriteRenderer>();
 
-        if (playerRenderer.color != (ob.color))
+        if (body.color != (ob.color))
         {
             for (int i = 0; i < 3; i++)
             {
@@ -132,7 +131,7 @@ public class Player : MonoBehaviour
 
             if (shiledTime)
             {
-                InvokeRepeating("Damage", 0.3f, 0.2f);
+                InvokeRepeating(nameof(Damage), 0.3f, 0.2f);
                 goto Jump;
             }
             PlaySound("Fail");
@@ -144,12 +143,22 @@ public class Player : MonoBehaviour
             die = true;
             return;
         }
-        
-      
+
     Jump:
-        PlaySound("Jump");
-        rb.AddForce(Vector2.up * jumpPower);
+        if (randing)
+        {
+            playerAni.PlayRandingAnimation();
+            randing = false;
+        }
+        else
+        {
+            playerAni.PlayReadyAnimation();
+        }
+
+        playerAni.AddForceJump();
     }
+
+
 
     void SaveScore()
     {
@@ -210,7 +219,7 @@ public class Player : MonoBehaviour
 
     public Color GetPlayerColor()
     {
-        return playerRenderer.color;
+        return body.color;
     }
 
 }

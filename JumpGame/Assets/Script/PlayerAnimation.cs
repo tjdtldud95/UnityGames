@@ -7,35 +7,39 @@ public class PlayerAnimation : MonoBehaviour
 {
     Animator ani;
     Rigidbody2D rb;
-    public bool ready = false;
-    public bool motioning = false;
-    public bool jump;
-    public int size;
-    public int a = 0;
-    public bool hit;
-    public GameObject asd;
+    bool motioning = false;
+    bool jump;
+
     private void Start()
     {
         ani = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    public void PlayHitAnimation()
     {
-        if(a>=10)
-        {
-            asd.SetActive(false);
-            ani.SetBool("Hit", true);
-        }
+        ani.SetBool("Hit", true);
+        ani.SetBool("Ready", false);
+        ani.SetBool("Jump", false);
+        ani.SetBool("Randing", false);
     }
+
+    public void ResetAnimation()
+    {
+        ani.SetBool("Hit", false);
+        ani.SetBool("Ready", false);
+        ani.SetBool("Jump", false);
+        ani.SetBool("Randing", false);
+    }
+
 
     public void PlayReadyAnimation()
     {
+        Debug.Log("aasadv");
         ani.SetBool("Ready", true);
         ani.SetBool("Jump", false);
         ani.SetBool("Randing", false);
-        ready = true;
-       
+
     }
 
     public void PlayJumpAnimaition()
@@ -53,55 +57,17 @@ public class PlayerAnimation : MonoBehaviour
         ani.SetBool("Randing", true);
         ani.SetBool("Ready", false);
         ani.SetBool("Jump", false);
-        ready = false;
         motioning = true;
     }
 
-    public void PlayHitAnimation()
-    {
-        ani.SetBool("Hit", true);
-        ani.SetBool("Ready", false);
-        ani.SetBool("Jump", false);
-        ani.SetBool("Randing", false);
-    }
-    
-
-
-    public void ResetAnimation()
-    {
-        ani.SetBool("Hit", false);
-        ani.SetBool("Ready", false);
-        ani.SetBool("Jump", false);
-        ani.SetBool("Randing", false);
-    }
-
-
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        PlayJumpAnimaition();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(size >=4)
-        {
-            PlayRandingAnimation();
-            PlayingJump();
-            size = 0;
-            return;
-        }
-
-        PlayReadyAnimation();
-        PlayingJump();
-        size++;
-        a++;
-    }
-
-
-    void PlayingJump()
+    public void AddForceJump()
     {
         StartCoroutine(nameof(Jump));
+    }
+
+    public void SetJump(bool value = true)
+    {
+        jump = value;
     }
 
     IEnumerator Jump()
@@ -110,14 +76,13 @@ public class PlayerAnimation : MonoBehaviour
         {
             motioning = false;
             yield return new WaitForSeconds(0.45f);
-            rb.AddForce(Vector2.up * 400f);
+            rb.AddForce(Vector2.up * 200f);
         }
         else
         {
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.2f);
             rb.AddForce(Vector2.up * 200f);
         }
-
     }
 
 }

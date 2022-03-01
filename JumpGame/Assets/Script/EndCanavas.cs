@@ -9,7 +9,7 @@ public class EndCanavas : MonoBehaviour
     public Transform playerColor;
     public TextMeshProUGUI scoreText;
     public Image reason;
-    public GameManager gm;
+    public GameManager gameManager;
     Color[] dieColor;
     int score;
     List<Image> answers;
@@ -21,14 +21,13 @@ public class EndCanavas : MonoBehaviour
     {
         dieColor = new Color[2]; // 0 : player 1:tile
 
-        dieColor = gm.GetDieReason();
-        score =gm.GetPlayerScore();
+        dieColor = gameManager.GetDieReason();
+        score = gameManager.GetPlayerScore();
          
-        int i = 0;
-        foreach(Transform T in playerColor.transform)
+        for(int i=0;i<2;i++)
         {
+            var T= playerColor.transform.GetChild(i);
             T.GetComponent<Image>().color = dieColor[i];
-            i++;
         }
 
         var obs = transform.Find("Answer");

@@ -35,7 +35,6 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlayReadyAnimation()
     {
-        Debug.Log("aasadv");
         ani.SetBool("Ready", true);
         ani.SetBool("Jump", false);
         ani.SetBool("Randing", false);

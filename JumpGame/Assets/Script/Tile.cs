@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    static int AnimationPlayCount;
+    int AnimationPlayCount;
 
     public void StartDieAnimation()
     {
@@ -13,10 +13,12 @@ public class Tile : MonoBehaviour
 
     void PlayingDieAnimation()
     {
-        if (AnimationPlayCount > 2) 
-            CancelInvoke("PlayingDieAnimation");
-       
-     
+        if (AnimationPlayCount >= 2)
+        {
+            CancelInvoke("PlayingDieAnimation");           
+        }
+
+
         if (gameObject.activeSelf == true)        
             gameObject.SetActive(false);
         else        

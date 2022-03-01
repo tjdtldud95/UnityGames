@@ -17,16 +17,17 @@ public class Player : MonoBehaviour
     Vector2 curuntPos;
     Vector2 velo = Vector2.up * 5f;
     Color tileColor;
-    public int jumpCount = 0;
-    public int maxJumpCount = 4;
+    int jumpCount = 0;
+    int maxJumpCount = 4;
     int score = 0;
     int tilesIndex = 0;
     int AnimationPlayCount = 0;
     bool isMove;
     bool die;
     bool shiledTime;
-    public bool randing;
+    bool randing;
     bool[] shiled = new bool[3];
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -61,11 +62,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (isMove)
-        {
-            isMove = false;
-            SetNextPos();
-        }
+        if (die) return;
 
         if (jumpCount >= maxJumpCount)
         {
@@ -106,9 +103,13 @@ public class Player : MonoBehaviour
     {
         if (die ) return;
 
-        if (gameObject.activeSelf == false) gameObject.SetActive(true);
+        if (isMove)
+        {
+            isMove = false;
+            SetNextPos();
+        }
 
-        if(jumpCount == maxJumpCount) randing = true;
+        if (jumpCount == maxJumpCount) randing = true;
 
         if (collision.transform.CompareTag("Respawn") || shiledTime)
         {
@@ -134,9 +135,12 @@ public class Player : MonoBehaviour
                 InvokeRepeating(nameof(Damage), 0.3f, 0.2f);
                 goto Jump;
             }
+
+            playerAni.PlayHitAnimation();
             PlaySound("Fail");
             ob.transform.GetComponent<Tile>().StartDieAnimation();
             rb.bodyType = RigidbodyType2D.Kinematic;
+            Invoke(nameof(DropPlayer), 1f);
             tileColor = ob.color;
 
             SaveScore();
@@ -159,6 +163,10 @@ public class Player : MonoBehaviour
     }
 
 
+    void DropPlayer()
+    {
+        rb.bodyType = RigidbodyType2D.Dynamic;
+    }
 
     void SaveScore()
     {

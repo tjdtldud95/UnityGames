@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    public Transform player;
+    public Player player;
 
     private void LateUpdate()
     {
-        transform.position = new Vector3(0, player.position.y, -10f);
-    
+        if (player.GetDie()) return;
+
+        transform.position = new Vector3(0, player.transform.position.y, -10f);   
     }
 
 }

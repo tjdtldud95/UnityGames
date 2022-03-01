@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     bool end = false;
     bool levelUp = false;
     AudioSource audio;
-    Color[] dieColor = new Color[2]; // 0 : player 1:tile
+    public Color[] dieColor = new Color[2]; // 0 : player 1:tile
 
     private void Start()
     {  
@@ -58,7 +58,7 @@ CheckEnd:
             SetiingEndInformation();
             audio.Stop();
 
-            Invoke(nameof(StartEndScene), 1.5f);
+            Invoke(nameof(StartEndScene), 2f);
         }
     }
 

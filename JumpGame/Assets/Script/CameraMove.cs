@@ -10,7 +10,7 @@ public class CameraMove : MonoBehaviour
     {
         if (player.GetDie()) return;
 
-        transform.position = new Vector3(0, player.transform.position.y, -10f);   
+        transform.position = new Vector3(0, player.transform.position.y+1.5f, -10f);   
     }
 
 }

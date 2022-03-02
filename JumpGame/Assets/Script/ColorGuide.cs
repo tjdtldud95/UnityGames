@@ -10,7 +10,7 @@ public class ColorGuide : MonoBehaviour
     public RawImage resultColor;
     public TextMeshProUGUI clickObjectName;
     public RawImage[] choices = new RawImage[2];
-    public RawImage choice;
+    RawImage choice;
     int[] clickCount = { 0, 0, 0 }; //R G B 
     int index = 0;
     bool isChoice = false;
@@ -40,7 +40,7 @@ public class ColorGuide : MonoBehaviour
     {
         ClearClickCount();
         ClearImageColors();
-
+        index = 0;
         if (name.Equals("Dust"))
             choice = choices[0];
 

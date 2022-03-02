@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         score++;
         curuntPos = nextPos;
         nextPos =tiles.GetTilesPos(tilesIndex++)+ Vector2.up;
-        tilesIndex %= 6;
+        tilesIndex %= 8;
     }
     
     public int GetScore()

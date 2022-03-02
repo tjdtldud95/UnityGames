@@ -26,7 +26,7 @@ public class TilesManager : MonoBehaviour
     public Transform stars;
     public int num = 0;
     public int starCreateScore;
-    Vector3 upPos = Vector3.up * 15f;
+    Vector3 upPos = Vector3.up * 20f;
     bool firstRePos = false;
     bool isStar = false;
     List<Transform> tilePos = new List<Transform>();
@@ -192,6 +192,7 @@ public class TilesManager : MonoBehaviour
         if(isStar)
         {
             CreateStar(index);
+            num = 0;
         }
     }
 
@@ -244,7 +245,6 @@ public class TilesManager : MonoBehaviour
         }
 
         num++;
-        num %= 30;
         return tilePos[tileIndex].position;
     }
 

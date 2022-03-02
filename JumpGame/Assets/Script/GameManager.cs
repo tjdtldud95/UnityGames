@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     bool end = false;
     bool levelUp = false;
     AudioSource audio;
-    public Color[] dieColor = new Color[2]; // 0 : player 1:tile
+    Color[] dieColor = new Color[2]; // 0 : player 1:tile
 
     private void Start()
     {  

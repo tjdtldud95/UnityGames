@@ -10,6 +10,7 @@ public class PlayerAnimation : MonoBehaviour
     bool motioning = false;
     bool jump;
 
+
     private void Start()
     {
         ani = GetComponent<Animator>();

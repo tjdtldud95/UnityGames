@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     Vector2 velo = Vector2.up * 5f;
     Color tileColor;
     int jumpCount = 0;
-    int maxJumpCount = 4;
+    int maxJumpCount = 400;
     int score = 0;
     int tilesIndex = 0;
     int AnimationPlayCount = 0;

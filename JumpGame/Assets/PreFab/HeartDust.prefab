@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 441558964628205284}
   m_Layer: 7
   m_Name: HeartDust
-  m_TagString: Player
+  m_TagString: HeartDust
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

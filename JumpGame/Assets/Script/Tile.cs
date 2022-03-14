@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+    public Player player;
+    public SpriteRenderer playerBody;
+    SpriteRenderer TileSR;
     int AnimationPlayCount;
+
+    private void Start()
+    {
+        TileSR = GetComponent<SpriteRenderer>();
+    }
 
     public void StartDieAnimation()
     {
@@ -26,4 +34,21 @@ public class Tile : MonoBehaviour
         
         AnimationPlayCount++;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer != 7)
+            return;
+
+        if(playerBody.color != TileSR.color)
+        {
+            StartDieAnimation();
+            player.SetHit(true);
+            player.SetTileColor(TileSR.color);
+
+        }
+    }
+
+
+
 }

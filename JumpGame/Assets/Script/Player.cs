@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
 {
     public AudioClip audioJump;
     public AudioClip audioFail;
-    public PlayerData data;
     public TilesManager tiles;
     public SpriteRenderer body;
     AudioSource audioSource;
@@ -26,10 +25,12 @@ public class Player : MonoBehaviour
     bool die;
     bool shiledTime;
     bool randing;
+    bool ishit;
     bool[] shiled = new bool[3];
 
     private void Start()
     {
+
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         playerAni = GetComponent<PlayerAnimation>();
@@ -44,6 +45,34 @@ public class Player : MonoBehaviour
         if (isMove)
         {
             transform.position = Vector2.Lerp(transform.position, nextPos + Vector2.up, 0.1f);
+        }
+
+        if(ishit && !die)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (shiled[i] == true)
+                {
+                    shiledTime = true;
+                    shiled[i] = false;
+                    break;
+                }
+            }
+
+            if (shiledTime)
+            {
+                InvokeRepeating(nameof(Damage), 0.3f, 0.2f);
+                ishit = false;
+                return;
+            }
+
+            playerAni.PlayHitAnimation();
+            PlaySound("Fail");
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            Invoke(nameof(DropPlayer), 1f);
+
+            SaveScore();
+            die = true;
         }
     }
 
@@ -116,38 +145,7 @@ public class Player : MonoBehaviour
             goto Jump;
         }
         
-        var ob = collision.transform.GetComponent<SpriteRenderer>();
 
-        if (body.color != (ob.color))
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                if (shiled[i] == true)
-                {
-                    shiledTime = true;
-                    shiled[i] = false;
-                    break;
-                }
-            }
-
-            if (shiledTime)
-            {
-                InvokeRepeating(nameof(Damage), 0.3f, 0.2f);
-                goto Jump;
-            }
-
-            playerAni.PlayHitAnimation();
-            PlaySound("Fail");
-            ob.transform.GetComponent<Tile>().StartDieAnimation();
-            rb.bodyType = RigidbodyType2D.Kinematic;
-            Invoke(nameof(DropPlayer), 1f);
-            tileColor = ob.color;
-
-            SaveScore();
-            die = true;
-            return;
-        }
-        
     Jump:
         if (randing)
         {
@@ -204,6 +202,15 @@ public class Player : MonoBehaviour
         audioSource.Play();
     }
 
+    public void SetTileColor(Color color)
+    {
+        tileColor = color;
+    }
+
+    public void SetHit(bool value=true)
+    {
+        ishit = value;
+    }
     public void ReduceMaxJumpCount()
     {
         maxJumpCount--;

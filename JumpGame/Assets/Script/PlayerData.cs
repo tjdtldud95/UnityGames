@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    int maxScore;
     public static PlayerData instance;
+    int maxScore;
+
     private void Awake()
     {
         if (instance == null)
@@ -17,11 +18,6 @@ public class PlayerData : MonoBehaviour
         else
             Destroy(gameObject);
     }
-
-    //private void Start()
-    //{
-    //    PlayerPrefs.Save();
-    //}
 
     public void SetScore(int score)
     {
@@ -36,6 +32,6 @@ public class PlayerData : MonoBehaviour
         return PlayerPrefs.GetInt("maxScore"); 
     }
 
-
+    
 
 }

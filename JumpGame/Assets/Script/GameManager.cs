@@ -89,4 +89,9 @@ CheckEnd:
     {
         return score;
     }
+
+    public void SetPlayer()
+    {
+
+    }
 }

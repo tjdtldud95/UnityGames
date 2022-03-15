@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class EndCanavas : MonoBehaviour
 {
+    public PlayerManager playCharater;
     public Transform playerColor;
     public TextMeshProUGUI scoreText;
     public Image reason;
     public GameManager gameManager;
+
     Color[] dieColor;
     int score;
     List<Image> answers;
@@ -23,11 +25,16 @@ public class EndCanavas : MonoBehaviour
 
         dieColor = gameManager.GetDieReason();
         score = gameManager.GetPlayerScore();
-         
-        for(int i=0;i<2;i++)
+
+        playerColor.transform.GetChild(0).GetComponent<Image>().color = dieColor[0];
+
+        for (int i = 1; i < playerColor.childCount; i++)
         {
-            var T= playerColor.transform.GetChild(i);
-            T.GetComponent<Image>().color = dieColor[i];
+            if(playerColor.GetChild(i).name.Equals(playCharater.player.name))
+            {
+                playerColor.GetChild(i).gameObject.SetActive(true);
+                playerColor.GetChild(i).GetChild(0).GetComponent<Image>().color = dieColor[1];
+            }
         }
 
         var obs = transform.Find("Answer");

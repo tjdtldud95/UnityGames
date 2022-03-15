@@ -31,6 +31,7 @@ public class TilesManager : MonoBehaviour
     bool isStar = false;
     List<Transform> tilePos = new List<Transform>();
     List<SpriteRenderer> tileColor = new List<SpriteRenderer>();
+    List<Tile> tiles = new List<Tile>();
 
     // Start is called before the first frame update
     void Awake()
@@ -39,6 +40,7 @@ public class TilesManager : MonoBehaviour
         {
             tilePos.Add(T);
             tileColor.Add(T.GetComponent<SpriteRenderer>());
+            tiles.Add(T.GetComponent<Tile>());
         }
     }
 
@@ -248,4 +250,14 @@ public class TilesManager : MonoBehaviour
         return tilePos[tileIndex].position;
     }
 
+
+
+    public void SetTilePlayerBody(Player py)
+    {
+        for(int i=0;i<tiles.Count;i++)
+        {
+            tiles[i].player = py;
+            tiles[i].playerBody = py.body;
+        }
+    }
 }

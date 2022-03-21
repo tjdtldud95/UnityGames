@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         playerAni = GetComponent<PlayerAnimation>();

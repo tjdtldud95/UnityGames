@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     public TilesManager tiles;
     public INGameCavas inGameCanvas;
     public GameManager gm;
+    public CameraMove camera;
     public Player player;
 
     void Start()
@@ -25,5 +26,6 @@ public class PlayerManager : MonoBehaviour
         inGameCanvas.player = player;
         inGameCanvas.playerRenderer = player.body;
         gm.player = player;
+        camera.player = player;
     }
 }

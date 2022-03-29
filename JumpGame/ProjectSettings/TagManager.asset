@@ -10,6 +10,7 @@ TagManager:
   - TravelDust
   - HeartDust
   - PainDust
+  - BabyDust
   layers:
   - Default
   - TransparentFX

@@ -2,7 +2,7 @@
 Unity Practice
 
 # GamePlayScene
-<iframe width="956" height="538" src="https://youtu.be/5Ifjiys3XxQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<img width = "40%" src = "
 
 # ProJect Member
 성시영 | 이수진 | 김주언 | 이지연

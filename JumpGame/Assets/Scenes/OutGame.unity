@@ -5410,7 +5410,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5940958451574634503, guid: f57556211884a1a4689ed301a05c027f, type: 3}
       propertyPath: m_Name
-      value: TravelDust
+      value: ChickDust
       objectReference: {fileID: 0}
     - target: {fileID: 5940958451574634503, guid: f57556211884a1a4689ed301a05c027f, type: 3}
       propertyPath: m_IsActive

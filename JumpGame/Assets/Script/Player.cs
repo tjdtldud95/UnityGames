@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     int jumpCount = 0;
     int maxJumpCount = 4;
     int score = 0;
-    int tilesIndex = 0;
+    public int tilesIndex = 0;
     int AnimationPlayCount = 0;
     bool isMove;
     bool die;

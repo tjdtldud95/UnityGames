@@ -53,7 +53,7 @@ public class TilesManager : MonoBehaviour
     {
         if (!firstRePos) firstRePos = true;
 
-        if (index < 0) index += 6;
+        if (index < 0) index += 8;
 
         ColoringTile(index);
         Vector3 move = tilePos[index].position + upPos;
@@ -64,7 +64,6 @@ public class TilesManager : MonoBehaviour
     void ColoringTile()
     {
         UseColor tile;
-        int i = 0;      
         foreach(var ob in tileColor)
         {
             tile = GetRandomlyColorByLevel();
@@ -110,7 +109,6 @@ public class TilesManager : MonoBehaviour
                     ob.color = MyColor.RBB;
                     break;
             }
-            i++;
         }
 
     }

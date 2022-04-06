@@ -26,7 +26,6 @@ public class Tile : MonoBehaviour
             CancelInvoke("PlayingDieAnimation");           
         }
 
-
         if (gameObject.activeSelf == true)        
             gameObject.SetActive(false);
         else        
@@ -34,10 +33,7 @@ public class Tile : MonoBehaviour
         
         AnimationPlayCount++;
     }
-
-
-
-    /*
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer != 7)
@@ -51,7 +47,7 @@ public class Tile : MonoBehaviour
 
         }
     }
-    */
+    
 
 
 }

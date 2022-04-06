@@ -63,54 +63,54 @@ public class TilesManager : MonoBehaviour
 
     void ColoringTile()
     {
-        UseColor tile;
-        foreach(var ob in tileColor)
+        int len = tileColor.Count;
+        for(int i=0;i<len;i++)
         {
-            tile = GetRandomlyColorByLevel();
+            UseColor tile = GetRandomlyColorByLevel();
             switch (tile)
             {
                 case UseColor.red:
-                    ob.color = MyColor.R;
+                    tileColor[i].color = MyColor.R;
                     break;
                 case UseColor.blue:
-                    ob.color = MyColor.B;               
+                    tileColor[i].color = MyColor.B;
                     break;
                 case UseColor.green:
-                    ob.color = MyColor.G;
+                    tileColor[i].color = MyColor.G;
                     break;
                 case UseColor.RB:
-                    ob.color = MyColor.RB;
+                    tileColor[i].color = MyColor.RB;
                     break;
                 case UseColor.RG:
-                    ob.color = MyColor.RG;
+                    tileColor[i].color = MyColor.RG;
                     break;
                 case UseColor.GB:
-                    ob.color = MyColor.GB;
+                    tileColor[i].color = MyColor.GB;
                     break;
                 case UseColor.RGB:
-                    ob.color = MyColor.RGB;
+                    tileColor[i].color = MyColor.RGB;
                     break;
                 case UseColor.RRB:
-                    ob.color = MyColor.RRB;
+                    tileColor[i].color = MyColor.RRB;
                     break;
                 case UseColor.RRG:
-                    ob.color = MyColor.RRG;
+                    tileColor[i].color = MyColor.RRG;
                     break;
                 case UseColor.RGG:
-                    ob.color = MyColor.RGG;
+                    tileColor[i].color = MyColor.RGG;
                     break;
                 case UseColor.BBG:
-                    ob.color = MyColor.BBG;
+                    tileColor[i].color = MyColor.BBG;
                     break;
                 case UseColor.BGG:
-                    ob.color = MyColor.BGG;
+                    tileColor[i].color = MyColor.BGG;
                     break;
                 case UseColor.RBB:
-                    ob.color = MyColor.RBB;
+                    tileColor[i].color = MyColor.RBB;
                     break;
             }
         }
-
+    
     }
 
     void SetStarCreateScore()

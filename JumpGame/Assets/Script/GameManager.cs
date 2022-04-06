@@ -7,7 +7,7 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject inGameCanvas;
+    public INGameCavas inGameCanvas;
     public GameObject endGameCanvas;
     public GameObject tiles;
     public Player player;
@@ -45,6 +45,11 @@ public class GameManager : MonoBehaviour
 
         if (levelUp)
         {
+            if(level == 3)
+            {
+                inGameCanvas.InGameCavesLevelUP();
+            }
+
             levelUp = false;
             player.ReduceMaxJumpCount();
         }
@@ -75,7 +80,7 @@ CheckEnd:
         tiles.SetActive(false);
 
         
-        inGameCanvas.SetActive(false);
+        inGameCanvas.gameObject.SetActive(false);
         endGameCanvas.SetActive(true);
         
     }
@@ -90,8 +95,4 @@ CheckEnd:
         return score;
     }
 
-    public void SetPlayer()
-    {
-
-    }
 }

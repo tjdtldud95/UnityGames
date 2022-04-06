@@ -10,7 +10,7 @@ public class INGameCavas : MonoBehaviour
     public SpriteRenderer playerRenderer;
     public TextMeshProUGUI scoreText;
     public Image enter;
-    List<Image> clickImages;
+    public List<Image> clickImages;
     Color enterColor;
     bool end;
     int[] clickCount = { 0, 0, 0 }; //R G B 
@@ -21,9 +21,10 @@ public class INGameCavas : MonoBehaviour
         clickImages = new List<Image>();
         enterColor = Color.clear;
 
-        foreach (Transform T in buttonImage.transform)
+        int len = buttonImage.childCount;
+        for(int i=0;i<len-1;i++)
         {
-            clickImages.Add(T.GetComponent<Image>());
+            clickImages.Add(buttonImage.GetChild(i).GetComponent<Image>());
         }
     }
     private void FixedUpdate()
@@ -35,6 +36,12 @@ public class INGameCavas : MonoBehaviour
             end = true;
         }
         scoreText.text = player.GetScore().ToString();
+    }
+
+
+    public void InGameCavesLevelUP()
+    {
+        OpenLastClickImage();
     }
 
     public void ClickButton(string buttonColor)
@@ -61,33 +68,40 @@ public class INGameCavas : MonoBehaviour
                 break;
         }
     }
-
+    void OpenLastClickImage()
+    {
+        clickImages.Add(buttonImage.GetChild(2).GetComponent<Image>());
+    }
     void ClearClickImage()
     {
-        foreach (var ob in clickImages)
+        int len = clickImages.Count;
+        for(int i=0;i<len;i++)
         {
-            ob.color = Color.clear;
+            clickImages[i].color = Color.clear;
         }
+
         for (int i = 0; i < 3; i++)
         {
             clickCount[i] = 0;
         }
+
         enter.color = Color.clear;
         enterColor = Color.clear;
     }
     void ChangeOrderButtonColor(Color color)
     {
-        if (clickImages[2].color.Equals(Color.clear) == false)
+        int len = clickImages.Count;
+        if (clickImages[len-1].color.Equals(Color.clear) == false)
         {
             ClearClickImage();
             return;
         }
 
-        foreach (var ob in clickImages)
+        for(int i=0;i<len;i++)
         {
-            if(ob.color.Equals(Color.clear))
+            if(clickImages[i].color.Equals(Color.clear))
             {
-                ob.color = color;
+                clickImages[i].color = color;
                 break;
             }
         }
@@ -99,11 +113,12 @@ public class INGameCavas : MonoBehaviour
             return;
 
 
-        foreach (var ob in clickImages)
+        int len = clickImages.Count;
+        for (int i = 0; i < len; i++)
         {
-            ob.color = Color.clear;
+            clickImages[i].color = Color.clear;
         }
-        
+
         int sum = clickCount[0] + clickCount[1]+ clickCount[2];
 
         for (int i = 0; i < 3; i++)
@@ -127,8 +142,9 @@ public class INGameCavas : MonoBehaviour
 
         playerRenderer.color = enter.color;
         enter.color = Color.clear;
-
-        for(int i=0;i<clickCount.Length;i++)
+        
+        len = clickCount.Length;
+        for(int i=0;i<len;i++)
         {
             clickCount[i] = 0;
         }

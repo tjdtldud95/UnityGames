@@ -16,7 +16,7 @@ public class Tile : MonoBehaviour
 
     public void StartDieAnimation()
     {
-        InvokeRepeating("PlayingDieAnimation", 0.3f,0.3f);
+        InvokeRepeating(nameof(PlayingDieAnimation), 0.3f,0.3f);
     }
 
     void PlayingDieAnimation()
@@ -41,6 +41,14 @@ public class Tile : MonoBehaviour
 
         if(playerBody.color != TileSR.color)
         {
+            var it = player.isShild();
+            if(it.Item1)
+            {
+                player.SetShildTime();
+                player.SetShild(it.Item2, false);
+                return;
+            }
+
             StartDieAnimation();
             player.SetHit(true);
             player.SetTileColor(TileSR.color);

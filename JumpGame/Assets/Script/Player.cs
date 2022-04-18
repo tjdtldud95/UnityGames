@@ -221,6 +221,30 @@ public class Player : MonoBehaviour
         }
     }
 
+    public (bool, int) isShild()
+    {
+        for(int i=2;i>=0;i--)
+        {
+            if(shiled[i] == true)
+            {
+                return (true,i);
+            }
+        }
+
+        return (false,-1);
+    }
+    public void SetShildTime(bool value = true)
+    {
+        shiledTime = value;
+    }
+
+    public void SetShild(int index, bool value = true)
+    {
+        if (index < 0)
+            return;
+
+        shiled[index] = value;
+    }
     public bool GetDie()
     {
         return die;

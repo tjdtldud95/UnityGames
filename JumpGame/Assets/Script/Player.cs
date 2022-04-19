@@ -23,10 +23,10 @@ public class Player : MonoBehaviour
     int AnimationPlayCount = 0;
     bool isMove;
     bool die;
-    bool shiledTime;
+    public bool shiledTime;
     bool randing;
     bool ishit;
-    bool[] shiled = new bool[3];
+   public  bool[] shiled = new bool[3];
 
     private void Start()
     {
@@ -176,6 +176,7 @@ public class Player : MonoBehaviour
         {
             CancelInvoke("Damage");
             AnimationPlayCount = 0;
+            shiledTime = false;
             return;
         }
 

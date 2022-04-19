@@ -36,16 +36,13 @@ public class Tile : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != 7)
-            return;
-
+        Debug.Log("ab");
         if(playerBody.color != TileSR.color)
         {
             var it = player.isShild();
             if(it.Item1)
             {
-                player.SetShildTime();
-                player.SetShild(it.Item2, false);
+                player.SetHit(true);
                 return;
             }
 

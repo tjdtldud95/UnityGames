@@ -28,7 +28,8 @@ public class EndCanavas : MonoBehaviour
 
         playerColor.transform.GetChild(0).GetComponent<Image>().color = dieColor[0];
 
-        for (int i = 1; i < playerColor.childCount; i++)
+        int len = playerColor.childCount;
+        for (int i = 1; i < len; i++)
         {
             if(playerColor.GetChild(i).name.Equals(playCharater.player.name))
             {

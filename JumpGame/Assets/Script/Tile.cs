@@ -36,7 +36,7 @@ public class Tile : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("ab");
+        
         if(playerBody.color != TileSR.color)
         {
             var it = player.isShild();
@@ -51,6 +51,7 @@ public class Tile : MonoBehaviour
             player.SetTileColor(TileSR.color);
 
         }
+        
     }
     
 

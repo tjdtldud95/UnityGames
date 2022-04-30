@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     public bool shiledTime;
     bool randing;
     bool ishit;
-   public  bool[] shiled = new bool[3];
+    bool[] shiled = new bool[3];
 
     private void Start()
     {
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         {
             transform.position = Vector2.Lerp(transform.position, nextPos + Vector2.up, 0.1f);
         }
-
+        
         if(ishit && !die)
         {
             for (int i = 0; i < 3; i++)
@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
             SaveScore();
             die = true;
         }
+        
     }
 
     void SetNextPos()

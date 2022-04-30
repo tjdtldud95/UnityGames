@@ -26,6 +26,7 @@ public class TilesManager : MonoBehaviour
     public Transform stars;
     public int num = 0;
     public int starCreateScore;
+    public Sprite[] tileSprite = new Sprite[3];
     Vector3 upPos = Vector3.up * 20f;
     bool firstRePos = false;
     bool isStar = false;
@@ -36,11 +37,12 @@ public class TilesManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        foreach (Transform T in transform)
+        int len = transform.childCount;
+        for(int i=0;i<len;i++)
         {
-            tilePos.Add(T);
-            tileColor.Add(T.GetComponent<SpriteRenderer>());
-            tiles.Add(T.GetComponent<Tile>());
+            tilePos.Add(transform.GetChild(i));
+            tileColor.Add(transform.GetChild(i).GetComponent<SpriteRenderer>());
+            tiles.Add(transform.GetChild(i).GetComponent<Tile>());
         }
     }
 
@@ -56,8 +58,9 @@ public class TilesManager : MonoBehaviour
         if (index < 0) index += 8;
 
         ColoringTile(index);
-        Vector3 move = tilePos[index].position + upPos;
-        tilePos[index].position = move;
+      //  Vector3 move = tilePos[index].position + upPos;
+        tilePos[index].position += upPos;
+        SetTileSprite(index);
     }
 
 
@@ -136,6 +139,22 @@ public class TilesManager : MonoBehaviour
         SetStarCreateScore();
     }
 
+    void SetTileSprite(int index)
+    {
+        if(tilePos[index].position.y <96f)
+        {
+            tileColor[index].sprite = tileSprite[0];
+        }    
+        else if(tilePos[index].position.y >=96f && tilePos[index].position.y <196f)
+        {
+            tileColor[index].sprite = tileSprite[1];
+        }
+
+        else
+        {
+            tileColor[index].sprite = tileSprite[2];
+        }
+    }
     void ColoringTile(int index)
     {
         bool isStar = false;
@@ -258,4 +277,7 @@ public class TilesManager : MonoBehaviour
             tiles[i].playerBody = py.body;
         }
     }
+
+
+    
 }

@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     int jumpCount = 0;
     int maxJumpCount = 4;
     int score = 0;
+    int useStar = 0;
     public int tilesIndex = 0;
     int AnimationPlayCount = 0;
     bool isMove;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
     bool randing;
     bool ishit;
     bool[] shiled = new bool[3];
+    bool getStar = false;
 
     private void Start()
     {
@@ -61,6 +63,8 @@ public class Player : MonoBehaviour
             if (shiledTime)
             {
                 InvokeRepeating(nameof(Damage), 0.3f, 0.2f);
+                getStar = true;
+                useStar++; 
                 ishit = false;
                 return;
             }
@@ -71,6 +75,10 @@ public class Player : MonoBehaviour
             Invoke(nameof(DropPlayer), 1f);
 
             SaveScore();
+            PlayerData.instance.SetusingShildNum(useStar);
+            if (getStar)
+                PlayerData.instance.SetplayingNum();
+            
             die = true;
         }
         

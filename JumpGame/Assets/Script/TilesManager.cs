@@ -60,6 +60,7 @@ public class TilesManager : MonoBehaviour
         ColoringTile(index);
       //  Vector3 move = tilePos[index].position + upPos;
         tilePos[index].position += upPos;
+        tiles[index].shild = false;
         SetTileSprite(index);
     }
 
@@ -135,6 +136,7 @@ public class TilesManager : MonoBehaviour
         Vector3 move = tilePos[index].position + upPos + Vector3.up;
         ob.SetParent(null);
         ob.position = move;
+        
         ob.gameObject.SetActive(true);
         SetStarCreateScore();
     }

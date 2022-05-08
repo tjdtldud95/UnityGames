@@ -43,4 +43,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c33157b1a1450949b77c23cca6e3033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScore: 0
+  playerImage:
+  - name: PainDust
+    images:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    isOpen: 0
+    howOpen: {fileID: 0}
+    introduce: {fileID: 0}
+  - name: 
+    images: []
+    isOpen: 0
+    howOpen: {fileID: 0}
+    introduce: {fileID: 0}
+  - name: 
+    images: []
+    isOpen: 0
+    howOpen: {fileID: 0}
+    introduce: {fileID: 0}
+  - name: 
+    images: []
+    isOpen: 0
+    howOpen: {fileID: 0}
+    introduce: {fileID: 0}

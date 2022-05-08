@@ -12,7 +12,7 @@ public class EndCanavas : MonoBehaviour
     public Image reason;
     public GameManager gameManager;
 
-    Color[] dieColor;
+    public Color[] dieColor;
     int score;
     List<Image> answers;
     private void Awake()
@@ -26,7 +26,7 @@ public class EndCanavas : MonoBehaviour
         dieColor = gameManager.GetDieReason();
         score = gameManager.GetPlayerScore();
 
-        playerColor.transform.GetChild(0).GetComponent<Image>().color = dieColor[0];
+        playerColor.transform.GetChild(0).GetComponent<Image>().color = dieColor[1];
 
         int len = playerColor.childCount;
         for (int i = 1; i < len; i++)
@@ -34,7 +34,7 @@ public class EndCanavas : MonoBehaviour
             if(playerColor.GetChild(i).name.Equals(playCharater.player.name))
             {
                 playerColor.GetChild(i).gameObject.SetActive(true);
-                playerColor.GetChild(i).GetChild(0).GetComponent<Image>().color = dieColor[1];
+                playerColor.GetChild(i).GetChild(0).GetComponent<Image>().color = dieColor[0];
             }
         }
 
@@ -136,6 +136,7 @@ public class EndCanavas : MonoBehaviour
     public void ReStartGame()
     {
         SceneManager.LoadScene("OutGame");
+
     }
 
     public void SystemDown()

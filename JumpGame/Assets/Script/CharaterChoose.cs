@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharaterChoose : MonoBehaviour
 {
@@ -9,9 +10,16 @@ public class CharaterChoose : MonoBehaviour
     bool isRight;
     int distance = 0;
     float moveSpeed = 25f;
+
+    public string[] charactornames;
+    public Button select;
+    public StartCanvas stc;
+    
+    int index = 0;
     private void Start()
     {
         pos = GetComponent<RectTransform>();
+        
     }
 
     private void FixedUpdate()
@@ -49,6 +57,8 @@ public class CharaterChoose : MonoBehaviour
 
         isLeft = true;
         distance += 900;
+        index--;
+        select.interactable = stc.playerImage[index].isOpen;
     }
 
     public void ClickRightBotton()
@@ -59,6 +69,13 @@ public class CharaterChoose : MonoBehaviour
         }
         isRight = true;
         distance -= 900;
+        index++;
+        select.interactable  = stc.playerImage[index].isOpen;
+    }
+
+    public void ClickSelect()
+    {
+        PlayerData.instance.name = charactornames[index];
     }
 
 

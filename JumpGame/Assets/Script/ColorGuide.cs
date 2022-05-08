@@ -8,9 +8,8 @@ public class ColorGuide : MonoBehaviour
 {
     public Transform imageColors;
     public RawImage resultColor;
-    public TextMeshProUGUI clickObjectName;
-    public RawImage[] choices = new RawImage[2];
-    RawImage choice;
+    public Image[] choices = new Image[2];
+    Image choice;
     int[] clickCount = { 0, 0, 0 }; //R G B 
     int index = 0;
     bool isChoice = false;
@@ -47,7 +46,6 @@ public class ColorGuide : MonoBehaviour
         else
             choice = choices[1];
 
-        ChangeObjectNameText(name);
         isChoice = true;
     }
 
@@ -79,10 +77,6 @@ public class ColorGuide : MonoBehaviour
         resultColor.color = Color.white;
     }
 
-    void ChangeObjectNameText(string name)
-    {
-        clickObjectName.text = name;
-    }
 
     void ChangeIamgeColors(Color color)
     {

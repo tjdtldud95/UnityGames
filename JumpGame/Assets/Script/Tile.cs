@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour
     public SpriteRenderer playerBody;
     SpriteRenderer TileSR;
     int AnimationPlayCount;
+    public bool shild = false;
 
     private void Start()
     {
@@ -36,7 +37,13 @@ public class Tile : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (player.shiledTime || shild)
+        {
+            shild = true;
+            return;
+        }
+
+
         if(playerBody.color != TileSR.color)
         {
             var it = player.isShild();

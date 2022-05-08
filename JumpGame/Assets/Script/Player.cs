@@ -243,18 +243,7 @@ public class Player : MonoBehaviour
 
         return (false,-1);
     }
-    public void SetShildTime(bool value = true)
-    {
-        shiledTime = value;
-    }
-
-    public void SetShild(int index, bool value = true)
-    {
-        if (index < 0)
-            return;
-
-        shiled[index] = value;
-    }
+  
     public bool GetDie()
     {
         return die;

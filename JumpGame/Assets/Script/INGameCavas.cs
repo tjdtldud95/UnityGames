@@ -7,6 +7,7 @@ public class INGameCavas : MonoBehaviour
 {
     public Player player;
     public Transform buttonImage;
+    public GameObject activeButtonImage;
     public SpriteRenderer playerRenderer;
     public TextMeshProUGUI scoreText;
     public Image enter;
@@ -71,6 +72,7 @@ public class INGameCavas : MonoBehaviour
     void OpenLastClickImage()
     {
         clickImages.Add(buttonImage.GetChild(2).GetComponent<Image>());
+        activeButtonImage.SetActive(true);
     }
     void ClearClickImage()
     {

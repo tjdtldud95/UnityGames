@@ -12,6 +12,7 @@ public class EndCanavas : MonoBehaviour
     public Image reason;
     public GameManager gameManager;
 
+    public Sprite failSprite;
     public Color[] dieColor;
     int score;
     List<Image> answers;
@@ -39,10 +40,12 @@ public class EndCanavas : MonoBehaviour
         }
 
         var obs = transform.Find("Answer");
-        foreach(Transform T in obs.transform)
+        len = obs.childCount;
+        for(int i=0;i<len;i++)
         {
-            answers.Add(T.GetComponent<Image>());
+            answers.Add(obs.GetChild(i).GetComponent<Image>());
         }
+
 
         reason.color = dieColor[1];
         scoreText.text =score.ToString();
@@ -56,37 +59,37 @@ public class EndCanavas : MonoBehaviour
         {
             answers[0].color = MyColor.R;
             answers[1].color = MyColor.R;
-            answers[2].gameObject.SetActive(false);
+            answers[2].sprite =failSprite;
         }
         else if(reason.color ==MyColor.G)
         {
             answers[0].color = MyColor.G;
             answers[1].color = MyColor.G;
-            answers[2].gameObject.SetActive(false);
+            answers[2].sprite =failSprite;
         }
         else if (reason.color == MyColor.B)
         {
             answers[0].color = MyColor.B;
             answers[1].color = MyColor.B;
-            answers[2].gameObject.SetActive(false);
+            answers[2].sprite =failSprite;
         }
         else if (reason.color == MyColor.RB)
         {
             answers[0].color = MyColor.R;
             answers[1].color = MyColor.B;
-            answers[2].gameObject.SetActive(false);
+            answers[2].sprite =failSprite;
         }
         else if (reason.color == MyColor.RG)
         {
             answers[0].color = MyColor.R;
             answers[1].color = MyColor.G;
-            answers[2].gameObject.SetActive(false);
+            answers[2].sprite =failSprite;
         }
         else if (reason.color == MyColor.GB)
         {
             answers[0].color = MyColor.G;
             answers[1].color = MyColor.B;
-            answers[2].gameObject.SetActive(false);
+            answers[2].sprite =failSprite;
         }
         else if (reason.color == MyColor.RGB)
         {

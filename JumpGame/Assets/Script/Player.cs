@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public AudioClip audioFail;
     public TilesManager tiles;
     public SpriteRenderer body;
+    public GameObject[] shiledOb;
     AudioSource audioSource;
     Rigidbody2D rb;
     PlayerAnimation playerAni;
@@ -36,6 +37,10 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerAni = GetComponent<PlayerAnimation>();
         rb.bodyType = RigidbodyType2D.Dynamic;
+        for(int i=0;i<3;i++)
+        {
+            shiledOb[i].SetActive(false);
+        }
         SetNextPos();
     }
 
@@ -56,6 +61,7 @@ public class Player : MonoBehaviour
                 {
                     shiledTime = true;
                     shiled[i] = false;
+                    shiledOb[i].SetActive(false);
                     break;
                 }
             }
@@ -130,6 +136,7 @@ public class Player : MonoBehaviour
                 if (shiled[i] == false)
                 {
                     shiled[i] = true;
+                    shiledOb[i].SetActive(true);
                     break;
                 }
             }

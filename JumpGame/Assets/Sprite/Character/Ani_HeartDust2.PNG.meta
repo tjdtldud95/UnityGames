@@ -1,64 +1,70 @@
 fileFormatVersion: 2
-guid: 29c040af70888394caa065a5b4d6662f
+guid: a75c1364e14cabf4e8bbf9daf799b45d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5700885996969984255
-    second: Ani_PainDust_0
+      213: -999139917696204813
+    second: Ani_HeartDust2_0
   - first:
-      213: -3988600459537277614
-    second: Ani_PainDust_1
+      213: 6256426115224793703
+    second: Ani_HeartDust2_1
   - first:
-      213: 7872504659655561192
-    second: Ani_PainDust_2
+      213: 1836258619366301242
+    second: Ani_HeartDust2_2
   - first:
-      213: 4069724643260901463
-    second: Ani_PainDust_3
+      213: -8522561538444127783
+    second: Ani_HeartDust2_3
   - first:
-      213: -6069045397337229633
-    second: Ani_PainDust_4
+      213: 4952641432230967594
+    second: Ani_HeartDust2_4
   - first:
-      213: 6528458570937353136
-    second: Ani_PainDust_5
+      213: 4835915234071810931
+    second: Ani_HeartDust2_5
   - first:
-      213: -5556175653982908693
-    second: Ani_PainDust_6
+      213: 8956485539340427776
+    second: Ani_HeartDust2_6
   - first:
-      213: 3560164580355778902
-    second: Ani_PainDust_7
+      213: -6364193325262823270
+    second: Ani_HeartDust2_7
   - first:
-      213: 8296974811431868645
-    second: Ani_PainDust_8
+      213: -3900149662134194740
+    second: Ani_HeartDust2_8
   - first:
-      213: -2600138857103947544
-    second: Ani_PainDust_9
+      213: 8245434109160981608
+    second: Ani_HeartDust2_9
   - first:
-      213: -8565570808443446032
-    second: Ani_PainDust_10
+      213: -1901594315283304851
+    second: Ani_HeartDust2_10
   - first:
-      213: 2182106670962944246
-    second: Ani_PainDust_11
+      213: -6723252626844269420
+    second: Ani_HeartDust2_11
   - first:
-      213: 5230009256058185281
-    second: Ani_PainDust_12
+      213: -7899735118824194045
+    second: Ani_HeartDust2_12
   - first:
-      213: -7659178893379062927
-    second: Ani_PainDust_13
+      213: 6641857301390999290
+    second: Ani_HeartDust2_13
   - first:
-      213: -5972494461083484255
-    second: Ani_PainDust_14
+      213: 7114182377873582056
+    second: Ani_HeartDust2_15
   - first:
-      213: -6559133790426078769
-    second: Ani_PainDust_15
+      213: -2905717833207977883
+    second: Ani_HeartDust2_16
   - first:
-      213: 8190806245035552047
-    second: Ani_PainDust_16
+      213: -8402658082847095394
+    second: Ani_HeartDust2_17
   - first:
-      213: 2761854955016004182
-    second: Ani_PainDust_17
+      213: 7298195338831970411
+    second: Ani_HeartDust2_18
   - first:
-      213: 3915288077582428340
-    second: Ani_PainDust_18
+      213: -2858288728408116465
+    second: Ani_HeartDust2_19
+  - first:
+      213: 7878346794120744666
+    second: Ani_HeartDust2_20
+  - first:
+      213: -7260752684862260894
+    second: Ani_HeartDust2_21
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,7 +95,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -125,7 +131,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -137,7 +143,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -149,7 +155,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -161,7 +167,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -172,400 +178,442 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ani_PainDust_0
+      name: Ani_HeartDust2_0
       rect:
         serializedVersion: 2
-        x: 100
-        y: 512
-        width: 51
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 10ffa9de36262e0b0800000000000000
-      internalID: -5700885996969984255
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_1
-      rect:
-        serializedVersion: 2
-        x: 253
-        y: 495
-        width: 51
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 25d125ab305a5a8c0800000000000000
-      internalID: -3988600459537277614
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_2
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 498
-        width: 50
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ef80631741c04d60800000000000000
-      internalID: 7872504659655561192
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_3
-      rect:
-        serializedVersion: 2
-        x: 559
-        y: 492
-        width: 53
+        x: 105
+        y: 483
+        width: 54
         height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 758283f20019a7830800000000000000
-      internalID: 4069724643260901463
+      spriteID: 3fffdccd9875222f0800000000000000
+      internalID: -999139917696204813
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ani_PainDust_4
-      rect:
-        serializedVersion: 2
-        x: 727
-        y: 493
-        width: 51
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fb6bef5cd5b66cba0800000000000000
-      internalID: -6069045397337229633
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_5
-      rect:
-        serializedVersion: 2
-        x: 874
-        y: 493
-        width: 51
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b343932b7eb99a50800000000000000
-      internalID: 6528458570937353136
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_6
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 364
-        width: 119
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: beeccaa3eaf74e2b0800000000000000
-      internalID: -5556175653982908693
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_7
-      rect:
-        serializedVersion: 2
-        x: 221
-        y: 364
-        width: 114
-        height: 123
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 659a802c2de386130800000000000000
-      internalID: 3560164580355778902
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_8
-      rect:
-        serializedVersion: 2
-        x: 368
-        y: 364
-        width: 114
-        height: 111
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5e892c9b1a6c42370800000000000000
-      internalID: 8296974811431868645
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_9
-      rect:
-        serializedVersion: 2
-        x: 522
-        y: 364
-        width: 126
-        height: 99
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e801af4c737aebd0800000000000000
-      internalID: -2600138857103947544
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_10
-      rect:
-        serializedVersion: 2
-        x: 698
-        y: 331
-        width: 107
-        height: 144
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0fcd5486bbaf02980800000000000000
-      internalID: -8565570808443446032
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_11
-      rect:
-        serializedVersion: 2
-        x: 844
-        y: 331
-        width: 109
-        height: 143
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f8a1c8b476684e10800000000000000
-      internalID: 2182106670962944246
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_12
-      rect:
-        serializedVersion: 2
-        x: 1006
-        y: 395
-        width: 114
-        height: 60
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1466a5765b9b49840800000000000000
-      internalID: 5230009256058185281
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_13
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 235
-        width: 48
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 173b8f4606125b590800000000000000
-      internalID: -7659178893379062927
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ani_PainDust_14
+      name: Ani_HeartDust2_1
       rect:
         serializedVersion: 2
         x: 255
-        y: 235
-        width: 49
+        y: 482
+        width: 54
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7627371676a43d650800000000000000
+      internalID: 6256426115224793703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_2
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 469
+        width: 54
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3ed3134c73bb7910800000000000000
+      internalID: 1836258619366301242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_3
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 468
+        width: 50
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d191ac6f67c9b980800000000000000
+      internalID: -8522561538444127783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_4
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 469
+        width: 50
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a29320474215bb440800000000000000
+      internalID: 4952641432230967594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_5
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 340
+        width: 120
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37310ca984f9c1340800000000000000
+      internalID: 4835915234071810931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_6
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 460
+        width: 56
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0022f400524db4c70800000000000000
+      internalID: 8956485539340427776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_7
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 340
+        width: 114
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a902ccdb3e7dda7a0800000000000000
+      internalID: -6364193325262823270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_8
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 340
+        width: 114
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccda1a1db82efd9c0800000000000000
+      internalID: -3900149662134194740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_9
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 340
+        width: 126
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8640e67d2aaad6270800000000000000
+      internalID: 8245434109160981608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_10
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 346
+        width: 114
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6ee2aa9b0e2c95e0800000000000000
+      internalID: -1901594315283304851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_11
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 400
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4944cb17b5532b2a0800000000000000
+      internalID: -6723252626844269420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_12
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 417
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3004ec693c08e5290800000000000000
+      internalID: -7899735118824194045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_13
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 342
+        width: 114
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afebe3a860e9c2c50800000000000000
+      internalID: 6641857301390999290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_15
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 223
+        width: 54
         height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1af71286eef6d1da0800000000000000
-      internalID: -5972494461083484255
+      spriteID: 8e7af7c1e27aab260800000000000000
+      internalID: 7114182377873582056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ani_PainDust_15
+      name: Ani_HeartDust2_16
       rect:
         serializedVersion: 2
-        x: 416
-        y: 240
-        width: 49
-        height: 34
+        x: 277
+        y: 223
+        width: 55
+        height: 33
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc16463c19649f4a0800000000000000
-      internalID: -6559133790426078769
+      spriteID: 568ee1e9601dca7d0800000000000000
+      internalID: -2905717833207977883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ani_PainDust_16
+      name: Ani_HeartDust2_17
       rect:
         serializedVersion: 2
-        x: 57
-        y: 125
-        width: 142
-        height: 95
+        x: 73
+        y: 92
+        width: 118
+        height: 115
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2d256312e69ba170800000000000000
-      internalID: 8190806245035552047
+      spriteID: e9585da2ef2c36b80800000000000000
+      internalID: -8402658082847095394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ani_PainDust_17
+      name: Ani_HeartDust2_18
       rect:
         serializedVersion: 2
-        x: 233
-        y: 81
-        width: 129
-        height: 145
+        x: 225
+        y: 92
+        width: 124
+        height: 119
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 652a1ead274145620800000000000000
-      internalID: 2761854955016004182
+      spriteID: b60cd704ef5684560800000000000000
+      internalID: 7298195338831970411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ani_PainDust_18
+      name: Ani_HeartDust2_19
       rect:
         serializedVersion: 2
-        x: 400
-        y: 95
-        width: 129
-        height: 140
+        x: 390
+        y: 92
+        width: 127
+        height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b86f9133c5e55630800000000000000
-      internalID: 3915288077582428340
+      spriteID: f033bbd9b815558d0800000000000000
+      internalID: -2858288728408116465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_20
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 147
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ade87e00ba2855d60800000000000000
+      internalID: 7878346794120744666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ani_HeartDust2_21
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 134
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26932d8f6ef9c3b90800000000000000
+      internalID: -7260752684862260894
       vertices: []
       indices: 
       edges: []

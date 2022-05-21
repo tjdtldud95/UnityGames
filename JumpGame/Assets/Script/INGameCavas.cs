@@ -23,7 +23,7 @@ public class INGameCavas : MonoBehaviour
         enterColor = Color.clear;
 
         int len = buttonImage.childCount;
-        for(int i=0;i<len-1;i++)
+        for(int i=4;i<len-1;i++)
         {
             clickImages.Add(buttonImage.GetChild(i).GetComponent<Image>());
         }
@@ -71,7 +71,7 @@ public class INGameCavas : MonoBehaviour
     }
     void OpenLastClickImage()
     {
-        clickImages.Add(buttonImage.GetChild(2).GetComponent<Image>());
+        clickImages.Add(buttonImage.GetChild(6).GetComponent<Image>());
         activeButtonImage.SetActive(true);
     }
     void ClearClickImage()

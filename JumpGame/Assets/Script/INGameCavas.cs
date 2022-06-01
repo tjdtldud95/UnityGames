@@ -9,6 +9,7 @@ public class INGameCavas : MonoBehaviour
     public Transform buttonImage;
     public GameObject activeButtonImage;
     public SpriteRenderer playerRenderer;
+    public TextMeshProUGUI scoreInt;
     public TextMeshProUGUI scoreText;
     public Image enter;
     public List<Image> clickImages;
@@ -36,7 +37,12 @@ public class INGameCavas : MonoBehaviour
         {
             end = true;
         }
-        scoreText.text = player.GetScore().ToString();
+        if(player.GetScore()>=76 && scoreText.color != Color.white)
+        {
+            scoreText.color = Color.white;
+            scoreInt.color = Color.white;
+        }
+        scoreInt.text = player.GetScore().ToString();
     }
 
 

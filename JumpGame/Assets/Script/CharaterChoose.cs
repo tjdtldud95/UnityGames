@@ -9,10 +9,12 @@ public class CharaterChoose : MonoBehaviour
     bool isLeft;
     bool isRight;
     int distance = 0;
-    float moveSpeed = 25f;
+    float moveSpeed = 30f;
 
     public string[] charactornames;
     public Button select;
+    public Button leftButton;
+    public Button rightButton;
     public StartCanvas stc;
     
     int index = 0;
@@ -29,9 +31,12 @@ public class CharaterChoose : MonoBehaviour
             if (pos.anchoredPosition.x == distance)
             {
                 isLeft = false;
+                leftButton.interactable = true;
+                rightButton.interactable = true;
                 return;
             }
-
+            rightButton.interactable = false;
+            leftButton.interactable = false;
             pos.localPosition += Vector3.right * moveSpeed;
         }
 
@@ -40,8 +45,12 @@ public class CharaterChoose : MonoBehaviour
             if (pos.anchoredPosition.x == distance)
             {
                 isRight = false;
+                leftButton.interactable = true;
+                rightButton.interactable = true;
                 return;
             }
+            rightButton.interactable = false;
+            leftButton.interactable = false;
 
             pos.localPosition += Vector3.left * moveSpeed;
           

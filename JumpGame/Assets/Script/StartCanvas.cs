@@ -63,7 +63,7 @@ public class StartCanvas : MonoBehaviour
     {
         int len = playerImage.Length;
         int score = PlayerData.instance.GetScore();
-        if (score >= 5 && score < 100) //pain
+        if (score >= 50 && score < 100) //pain
         {
             for (int i = 0; i < len; i++)
             {

@@ -2,7 +2,7 @@
 Unity Practice
 
 # GamePlayScene
-<img width = "40%" src = "
+<img width = "40%" src = "https://user-images.githubusercontent.com/61022943/171983419-dfb2f85b-b05d-4b7c-9f89-183f1fb96a8d.jpg"/>
 
 # ProJect Member
 성시영(개발) | 이수진(기획) | 김주언(아트) | 이지연(아트)

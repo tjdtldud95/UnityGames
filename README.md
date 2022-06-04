@@ -1,5 +1,5 @@
 # UnityGames
-Unity Practice
+Dust in the Wind
 
 # GamePlayScene
 <img width = "30%" src = "https://user-images.githubusercontent.com/61022943/171983419-dfb2f85b-b05d-4b7c-9f89-183f1fb96a8d.jpg"/>|

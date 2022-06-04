@@ -1,5 +1,0 @@
-Alias : dust
-password : 0301**
-
-dust1
-0301**

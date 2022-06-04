@@ -2,7 +2,6 @@
 Dust in the Wind
 
 # GamePlayScene
----|---|---|
 <img width = "30%" src = "https://user-images.githubusercontent.com/61022943/171983419-dfb2f85b-b05d-4b7c-9f89-183f1fb96a8d.jpg"/>|
 <img width = "30%" src  = "https://user-images.githubusercontent.com/61022943/171983766-33e00424-f2e1-4d72-8848-25075afc16c6.jpg"/>|
 <img width = "30%" src = "https://user-images.githubusercontent.com/61022943/171983484-e9cac0ef-7e60-4c90-8f14-9ac9bdbc4bcb.jpg"/>

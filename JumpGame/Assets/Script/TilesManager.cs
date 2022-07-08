@@ -27,9 +27,9 @@ public class TilesManager : MonoBehaviour
     public int num = 0;
     public int starCreateScore;
     public Sprite[] tileSprite = new Sprite[3];
+    public Transform startTile;
     Vector3 upPos = Vector3.up * 20f;
     bool firstRePos = false;
-    bool isStar = false;
     List<Transform> tilePos = new List<Transform>();
     List<SpriteRenderer> tileColor = new List<SpriteRenderer>();
     List<Tile> tiles = new List<Tile>();
@@ -44,21 +44,59 @@ public class TilesManager : MonoBehaviour
             tileColor.Add(transform.GetChild(i).GetComponent<SpriteRenderer>());
             tiles.Add(transform.GetChild(i).GetComponent<Tile>());
         }
+        
     }
 
     private void Start()
     {
+        TileSettingToCheckPoint();
         ColoringTile();
         SetStarCreateScore();
     }
+
+    void TileSettingToCheckPoint()
+    {
+        if (!PlayerData.instance.goCheckPoint)
+            return;
+
+        Vector3 move = startTile.position + Vector3.up * 20f;  //-2.5 + 20  = 18
+        startTile.position = move;
+        TilesPositioningForCheckPoint();
+    }
+
+
+    bool isHigherAllTile(Transform tilePos)
+    {
+        if (startTile.position.y >= tilePos.position.y)
+            return false;
+
+        return true;
+    }
+
+    void TilesPositioningForCheckPoint()
+    {
+        bool again= false;
+        for(int i=0;i < tilePos.Count; i++)
+        {
+            if (!isHigherAllTile(tilePos[i]))
+            {
+                RePositionandColoringTile(i);
+                again = true;
+            }
+        }
+
+        if(again)
+            TilesPositioningForCheckPoint();
+    }
+
     void RePositionandColoringTile(int index)
     {
         if (!firstRePos) firstRePos = true;
 
         if (index < 0) index += 8;
 
+        tiles[index].gameObject.layer = 6;
         ColoringTile(index);
-      //  Vector3 move = tilePos[index].position + upPos;
         tilePos[index].position += upPos;
         tiles[index].shild = false;
         SetTileSprite(index);
@@ -115,6 +153,14 @@ public class TilesManager : MonoBehaviour
             }
         }
     
+    }
+
+    public void TilesManagerReset()
+    {
+        for(int i = 0;i<tiles.Count;i++)
+        {
+            tiles[i].gameObject.SetActive(true);
+        }
     }
 
     void SetStarCreateScore()

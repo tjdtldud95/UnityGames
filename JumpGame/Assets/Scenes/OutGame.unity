@@ -4323,6 +4323,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1691180754237731015, guid: f57556211884a1a4689ed301a05c027f, type: 3}
+      propertyPath: goCheckPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691180754237731015, guid: f57556211884a1a4689ed301a05c027f, type: 3}
       propertyPath: playerImage.Array.size
       value: 5
       objectReference: {fileID: 0}

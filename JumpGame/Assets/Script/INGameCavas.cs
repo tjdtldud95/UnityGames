@@ -45,6 +45,12 @@ public class INGameCavas : MonoBehaviour
         scoreInt.text = player.GetScore().ToString();
     }
 
+    public void InGameCanvasReset()
+    {
+        end = false;
+        ClearClickImage();
+        gameObject.SetActive(true);
+    }
 
     public void InGameCavesLevelUP()
     {

@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public bool shiledTime;
     bool randing;
     bool ishit;
+    bool isReset;
     bool[] shiled = new bool[3];
     bool getStar = false;
 
@@ -36,6 +37,9 @@ public class Player : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         playerAni = GetComponent<PlayerAnimation>();
+
+        SettingCheckPoint();
+
         rb.bodyType = RigidbodyType2D.Dynamic;
         for(int i=0;i<3;i++)
         {
@@ -90,6 +94,16 @@ public class Player : MonoBehaviour
         
     }
 
+    void SettingCheckPoint()
+    {
+        if (!PlayerData.instance.goCheckPoint)
+            return;
+
+        score = 9;
+        Vector3 move = transform.position + Vector3.up * 20f;  //-2.5 + 20  = 18
+        transform.position = move;
+    }
+
     void SetNextPos()
     { 
         score++;
@@ -107,17 +121,37 @@ public class Player : MonoBehaviour
     {
         if (die) return;
 
-        if (jumpCount >= maxJumpCount)
+        if(isReset)
         {
-            jumpCount = -1;
-            isMove = true;
-
-            if (shiledTime) shiledTime = false;
-
-            if (collision.gameObject.layer.Equals(3))
+            if (jumpCount >= 3)
             {
-                collision.gameObject.SetActive(false);
+                jumpCount = -1;
+                isMove = true;
+                isReset = false;
+                if (shiledTime) shiledTime = false;
+
+                if (collision.gameObject.layer.Equals(3))
+                {
+                    collision.gameObject.SetActive(false);
+                }
             }
+
+        }
+        else
+        {
+            if (jumpCount >= maxJumpCount)
+            {
+                jumpCount = -1;
+                isMove = true;
+
+                if (shiledTime) shiledTime = false;
+
+                if (collision.gameObject.layer.Equals(3))
+                {
+                    collision.gameObject.SetActive(false);
+                }
+            }
+
         }
 
         playerAni.PlayJumpAnimaition();
@@ -153,14 +187,25 @@ public class Player : MonoBehaviour
             SetNextPos();
         }
 
-        if (jumpCount == maxJumpCount) randing = true;
+        if (isReset)
+        {
+            if (jumpCount >= 3)
+            {
+                randing = true;
+            }
 
-        if (collision.transform.CompareTag("Respawn") || shiledTime)
+        }
+        else
+        {
+            if (jumpCount == maxJumpCount)
+                randing = true;
+        }
+
+        if (collision.gameObject.layer==3 || shiledTime)
         {
             goto Jump;
         }
         
-
     Jump:
         if (randing)
         {
@@ -175,6 +220,15 @@ public class Player : MonoBehaviour
         playerAni.AddForceJump();
     }
 
+    public void PlayerReset()
+    {
+        transform.position = curuntPos+Vector2.up*1f;
+        gameObject.SetActive(true);
+        die = false;
+        shiledTime = true;
+        ishit = false;
+        isReset = true;
+    }
 
     void DropPlayer()
     {

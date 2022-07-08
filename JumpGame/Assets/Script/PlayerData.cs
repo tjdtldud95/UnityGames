@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-
-
 public class PlayerData : MonoBehaviour
 {
     public static PlayerData instance;
+    public bool goCheckPoint;
     int playingNum;
     int maxScore;
     int usingShildNum;

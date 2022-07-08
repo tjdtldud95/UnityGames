@@ -26,7 +26,6 @@ public class Tile : MonoBehaviour
         {
             CancelInvoke("PlayingDieAnimation");           
         }
-
         if (gameObject.activeSelf == true)        
             gameObject.SetActive(false);
         else        
@@ -42,8 +41,7 @@ public class Tile : MonoBehaviour
             shild = true;
             return;
         }
-
-
+        /*
         if(playerBody.color != TileSR.color)
         {
             var it = player.isShild();
@@ -56,9 +54,8 @@ public class Tile : MonoBehaviour
             StartDieAnimation();
             player.SetHit(true);
             player.SetTileColor(TileSR.color);
-
         }
-        
+        */
     }
     
 

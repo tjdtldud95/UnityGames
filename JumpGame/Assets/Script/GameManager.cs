@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public INGameCavas inGameCanvas;
     public GameObject endGameCanvas;
-    public GameObject tiles;
+    public TilesManager tiles;
     public Player player;
     public int[] levelScore = { 10, 20, 50, 70 };
     public int level = 0;
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     Color[] dieColor = new Color[2]; // 0 : player 1:tile
 
     private void Start()
-    {  
+    {
         audio = GetComponent<AudioSource>();
         audio.Stop();
         audio.Play();
@@ -62,9 +62,21 @@ CheckEnd:
             end = true;
             SetiingEndInformation();
             audio.Stop();
-
             Invoke(nameof(StartEndScene), 2f);
         }
+    }
+
+
+
+    public void GameManagerReset()
+    {
+        player.PlayerReset();
+        tiles.TilesManagerReset();
+        end = false;
+        audio.Play();
+        tiles.gameObject.SetActive(true);
+        inGameCanvas.InGameCanvasReset();
+        endGameCanvas.SetActive(false);
     }
 
     void SetiingEndInformation()
@@ -77,12 +89,10 @@ CheckEnd:
     public void StartEndScene()
     {
         player.gameObject.SetActive(false);
-        tiles.SetActive(false);
+        tiles.gameObject.SetActive(false);
 
-        
         inGameCanvas.gameObject.SetActive(false);
         endGameCanvas.SetActive(true);
-        
     }
 
     public Color[] GetDieReason()

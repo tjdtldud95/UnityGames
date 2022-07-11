@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public INGameCavas inGameCanvas;
     public GameObject endGameCanvas;
+    public GoogleAdmob admob;
     public TilesManager tiles;
     public Player player;
     public int[] levelScore = { 10, 20, 50, 70 };
@@ -22,15 +23,26 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        admob = GoogleAdmob.instance;
+        admob.StartInGameScean();
         audio = GetComponent<AudioSource>();
         audio.Stop();
         audio.Play();
         endGameCanvas.SetActive(false);
+        
     }
 
     private void Update()
     {
-        if (end ) return;
+        if (end )
+        {
+            if (admob.isReset)
+            {
+                admob.isReset = false;
+                GameManagerReset();
+            }
+            return;
+        }
 
         if (level > 3)
             goto CheckEnd;

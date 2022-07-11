@@ -24,6 +24,7 @@ public class PlayerData : MonoBehaviour
             Destroy(gameObject);
     }
 
+
     public void SetScore(int score)
     {
         if (PlayerPrefs.GetInt("maxScore") > score) return;

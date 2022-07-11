@@ -362,9 +362,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 446973319}
-        m_TargetAssemblyTypeName: GoogleAdmob, Assembly-CSharp
-        m_MethodName: UserChoseToWatchAd
+      - m_Target: {fileID: 1329415366}
+        m_TargetAssemblyTypeName: EndCanavas, Assembly-CSharp
+        m_MethodName: WatchRewardAd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3716,7 +3716,6 @@ GameObject:
   - component: {fileID: 446973318}
   - component: {fileID: 446973317}
   - component: {fileID: 446973316}
-  - component: {fileID: 446973319}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3834,6 +3833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inGameCanvas: {fileID: 1836217269}
   endGameCanvas: {fileID: 1329415364}
+  admob: {fileID: 0}
   tiles: {fileID: 1836887810}
   player: {fileID: 376403498}
   levelScore: 0a000000140000003200000046000000
@@ -3852,18 +3852,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &446973319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446973315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 938b28ed364160447aca01f77b8511e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &467755967
 GameObject:
   m_ObjectHideFlags: 0

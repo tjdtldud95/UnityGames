@@ -11,9 +11,9 @@ public class EndCanavas : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public Image reason;
     public GameManager gameManager;
-
     public Sprite failSprite;
     public Color[] dieColor;
+
     int score;
     List<Image> answers;
     private void Awake()
@@ -135,6 +135,10 @@ public class EndCanavas : MonoBehaviour
         }
     }
     
+    public void WatchRewardAd()
+    {
+        GoogleAdmob.instance.UserChoseToWatchAd();
+    }
 
     public void ReStartGame()
     {

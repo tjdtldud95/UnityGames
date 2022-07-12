@@ -28,7 +28,7 @@ public class TilesManager : MonoBehaviour
     public int starCreateScore;
     public Sprite[] tileSprite = new Sprite[3];
     public Transform startTile;
-    Vector3 upPos = Vector3.up * 20f;
+    Vector3 upPos = Vector3.up * 25f;
     bool firstRePos = false;
     List<Transform> tilePos = new List<Transform>();
     List<SpriteRenderer> tileColor = new List<SpriteRenderer>();
@@ -59,9 +59,10 @@ public class TilesManager : MonoBehaviour
         if (!PlayerData.instance.goCheckPoint)
             return;
 
-        Vector3 move = startTile.position + Vector3.up * 20f;  //-2.5 + 20  = 18
+        Vector3 move = startTile.position + (Vector3.up * 25f)*5; 
         startTile.position = move;
         TilesPositioningForCheckPoint();
+        firstRePos = false;
     }
 
 
@@ -93,7 +94,8 @@ public class TilesManager : MonoBehaviour
     {
         if (!firstRePos) firstRePos = true;
 
-        if (index < 0) index += 8;
+        if (index < 0) index += 10;
+            
 
         tiles[index].gameObject.layer = 6;
         ColoringTile(index);

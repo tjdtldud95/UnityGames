@@ -20,13 +20,17 @@ public class INGameCavas : MonoBehaviour
     private void Start()
     {
         end = false;
-        clickImages = new List<Image>();
         enterColor = Color.clear;
 
         int len = buttonImage.childCount;
         for(int i=4;i<len-1;i++)
         {
             clickImages.Add(buttonImage.GetChild(i).GetComponent<Image>());
+        }
+
+        if (PlayerData.instance.goCheckPoint)
+        {
+            SortClickImage();
         }
     }
     private void FixedUpdate()
@@ -43,6 +47,12 @@ public class INGameCavas : MonoBehaviour
             scoreInt.color = Color.white;
         }
         scoreInt.text = player.GetScore().ToString();
+    }
+
+    public void SortClickImage()
+    {
+        clickImages.Add(clickImages[0]);
+        clickImages.RemoveAt(0);
     }
 
     public void InGameCanvasReset()

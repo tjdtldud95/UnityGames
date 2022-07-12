@@ -99,8 +99,8 @@ public class Player : MonoBehaviour
         if (!PlayerData.instance.goCheckPoint)
             return;
 
-        score = 9;
-        Vector3 move = transform.position + Vector3.up * 20f;  //-2.5 + 20  = 18
+        score = 50;
+        Vector3 move = transform.position + (Vector3.up * 25f)*5;  //-2.5 + 20  = 18
         transform.position = move;
     }
 
@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
         score++;
         curuntPos = nextPos;
         nextPos =tiles.GetTilesPos(tilesIndex++)+ Vector2.up;
-        tilesIndex %= 8;
+        tilesIndex %= 10;
     }
     
     public int GetScore()

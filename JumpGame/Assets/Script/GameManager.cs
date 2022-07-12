@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public int[] levelScore = { 10, 20, 50, 70 };
     public int level = 0;
+    public AudioClip[] audioClips;
     int Max;
     int score;
     bool end = false;
@@ -29,12 +30,12 @@ public class GameManager : MonoBehaviour
         audio.Stop();
         audio.Play();
         endGameCanvas.SetActive(false);
-        
+        GameManagerSettingToCheckPoint();
     }
 
     private void Update()
     {
-        if (end )
+        if (end)
         {
             if (admob.isReset)
             {
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviour
         if (level > 3)
             goto CheckEnd;
         
+
+
         //playing and LevelUP
         int playScore = player.GetScore();
         if (playScore == levelScore[level] && playScore != 0 && !levelUp)
@@ -65,11 +68,15 @@ public class GameManager : MonoBehaviour
             levelUp = false;
             player.ReduceMaxJumpCount();
         }
-      
-CheckEnd:
 
+    CheckEnd:
+        if (player.GetScore() == 80)
+        {
+            audio.clip = audioClips[0];
+            audio.Play();
+        }
         //end   
-        if(player.GetDie() && !end)
+        if (player.GetDie() && !end)
         {
             end = true;
             SetiingEndInformation();
@@ -78,6 +85,23 @@ CheckEnd:
         }
     }
 
+    void GameManagerSettingToCheckPoint()
+    {
+        if (!PlayerData.instance.goCheckPoint)
+            return;
+
+        level = 3;
+        inGameCanvas.InGameCavesLevelUP();
+        player.ReduceMaxJumpCount();
+        player.ReduceMaxJumpCount();
+        player.ReduceMaxJumpCount();
+
+        if (player.GetScore()>50)
+        {
+            level++;
+            player.ReduceMaxJumpCount();
+        }
+    }
 
 
     public void GameManagerReset()

@@ -63,7 +63,7 @@ public class StartCanvas : MonoBehaviour
     {
         int len = playerImage.Length;
         int score = PlayerData.instance.GetScore();
-        if (score >= 50 && score < 100) //pain
+        if (score >= 5 && score <= 10) //pain
         {
             for (int i = 0; i < len; i++)
             {
@@ -75,7 +75,7 @@ public class StartCanvas : MonoBehaviour
             }
         }
 
-        if (score >= 100) //heart
+        if (score >= 10) //heart
         {
             for (int i = 0; i < len; i++)
             {

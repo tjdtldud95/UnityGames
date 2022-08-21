@@ -5,6 +5,15 @@ using UnityEngine.UI;
 
 public class CharaterChoose : MonoBehaviour
 {
+    enum CharaterName
+    {
+        TravelDust,
+        PainDust,
+        HeartDust,
+        BabyDust,
+        ChickDust
+    }
+
     RectTransform pos;
     bool isLeft;
     bool isRight;
@@ -16,7 +25,10 @@ public class CharaterChoose : MonoBehaviour
     public Button leftButton;
     public Button rightButton;
     public StartCanvas stc;
-    
+    public Transform illustration_Panel;
+    public GameObject illustration_Open;
+    public GameObject illustration_Close;
+
     int index = 0;
     private void Start()
     {
@@ -68,6 +80,17 @@ public class CharaterChoose : MonoBehaviour
         distance += 900;
         index--;
         select.interactable = stc.playerImage[index].isOpen;
+        if (stc.playerImage[index].isOpen)
+        {
+            illustration_Open.SetActive(true);
+            illustration_Close.SetActive(false);
+        }
+
+        else
+        {
+            illustration_Open.SetActive(false);
+            illustration_Close.SetActive(true);
+        }
     }
 
     public void ClickRightBotton()
@@ -80,6 +103,18 @@ public class CharaterChoose : MonoBehaviour
         distance -= 900;
         index++;
         select.interactable  = stc.playerImage[index].isOpen;
+
+        if (stc.playerImage[index].isOpen)
+        {
+            illustration_Open.SetActive(true);
+            illustration_Close.SetActive(false);
+        }
+
+        else
+        {
+            illustration_Open.SetActive(false);
+            illustration_Close.SetActive(true);
+        }
     }
 
     public void ClickSelect()
@@ -87,5 +122,28 @@ public class CharaterChoose : MonoBehaviour
         PlayerData.instance.name = charactornames[index];
     }
 
+    public void Show_illustration()
+    {
+        Clear_illustration();
 
+        illustration_Panel.gameObject.SetActive(true);
+        illustration_Panel.GetChild(index).gameObject.SetActive(true);
+    }
+
+    public void Close_illustration()
+    {
+        Clear_illustration();
+        illustration_Panel.gameObject.SetActive(false);
+    }
+
+
+    void Clear_illustration()
+    {
+        int len = illustration_Panel.childCount - 1;
+        for (int i = 0; i < len; ++i)
+        {
+            illustration_Panel.GetChild(i).gameObject.SetActive(false);
+        }
+
+    }
 }

@@ -98,8 +98,12 @@ public class GameManager : MonoBehaviour
 
         if (player.GetScore()>50)
         {
-            level++;
             player.ReduceMaxJumpCount();
+        }
+
+        else if (player.GetScore() > 100)
+        {
+            level++;
         }
     }
 

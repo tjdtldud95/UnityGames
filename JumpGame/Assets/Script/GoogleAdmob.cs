@@ -8,6 +8,7 @@ public class GoogleAdmob : MonoBehaviour
 {
     static public GoogleAdmob instance;
     public bool isReset;
+    public int iAdCount;
     bool isStartScean;
     private BannerView bannerView;
     private InterstitialAd interstitial;

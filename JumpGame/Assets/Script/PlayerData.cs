@@ -29,6 +29,9 @@ public class PlayerData : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("maxScore") > score) return;
 
+        if (score <= 1000)
+            score = 950;
+
         PlayerPrefs.SetInt("maxScore", score);
         PlayerPrefs.Save();
 

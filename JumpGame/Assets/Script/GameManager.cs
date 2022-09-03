@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public AudioClip[] audioClips;
     int Max;
     int score;
-    bool end = false;
+    public bool end = false;
     bool levelUp = false;
     AudioSource audio;
     Color[] dieColor = new Color[2]; // 0 : player 1:tile
@@ -44,15 +44,12 @@ public class GameManager : MonoBehaviour
             }
             return;
         }
-
-        if (level > 3)
-            goto CheckEnd;
-        
-
-
         //playing and LevelUP
         int playScore = player.GetScore();
-        if (playScore == levelScore[level] && playScore != 0 && !levelUp)
+        if (level >3)
+            goto check;
+
+        if ( playScore == levelScore[level] && playScore != 0 && !levelUp)
         {
             levelUp = true;
             level++;
@@ -69,41 +66,60 @@ public class GameManager : MonoBehaviour
             player.ReduceMaxJumpCount();
         }
 
-    CheckEnd:
-        if (player.GetScore() == 80)
+    check:
+        if (playScore >= 100)
         {
-            audio.clip = audioClips[0];
-            audio.Play();
+            if (audio.clip != audioClips[0])
+            { 
+                audio.clip = audioClips[0];
+                audio.Play();
+            }
         }
         //end   
-        if (player.GetDie() && !end)
+        if (player.GetDie())
         {
             end = true;
             SetiingEndInformation();
             audio.Stop();
+            PlayerData.instance.goCheckPoint = false;
             Invoke(nameof(StartEndScene), 2f);
+        }
+
+        if(player.bIsFinish)
+        {
+            inGameCanvas.ClearMode();
+            end = true;
+            PlayerData.instance.goCheckPoint = false;
+            Invoke(nameof(GoToOutGameScean), 20f);
         }
     }
 
+    void GoToOutGameScean()
+    {
+        SceneManager.LoadScene("OutGame");
+    }
     void GameManagerSettingToCheckPoint()
     {
         if (!PlayerData.instance.goCheckPoint)
             return;
 
+        end = false;
         level = 3;
         inGameCanvas.InGameCavesLevelUP();
         player.ReduceMaxJumpCount();
         player.ReduceMaxJumpCount();
         player.ReduceMaxJumpCount();
 
-        if (player.GetScore()>50)
+        if (PlayerData.instance.GetScore()>=50&& PlayerData.instance.GetScore() < 100)
         {
             player.ReduceMaxJumpCount();
         }
 
-        else if (player.GetScore() > 100)
+        else if (PlayerData.instance.GetScore() >= 100)
         {
             level++;
+            player.ReduceMaxJumpCount();
+            player.ReduceMaxJumpCount();
         }
     }
 

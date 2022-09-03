@@ -25,6 +25,7 @@ public class TilesManager : MonoBehaviour
     public GameManager gm;
     public Transform stars;
     public int num = 0;
+    public int level = 0;
     public int starCreateScore;
     public Sprite[] tileSprite = new Sprite[3];
     public Transform startTile;
@@ -59,8 +60,9 @@ public class TilesManager : MonoBehaviour
         if (!PlayerData.instance.goCheckPoint)
             return;
 
-        Vector3 move = startTile.position + (Vector3.up * 25f)*5; 
-        startTile.position = move;
+
+        int num = (PlayerData.instance.GetScore()) / 50;
+        startTile.position += (Vector3.up * 25f*num) * 5;
         TilesPositioningForCheckPoint();
         firstRePos = false;
     }
@@ -268,7 +270,7 @@ public class TilesManager : MonoBehaviour
 
     UseColor GetRandomlyColorByLevel()
     {
-        int level =gm.level+1;
+       level =gm.level+1;
         UseColor value = 0;
         switch(level)
         {

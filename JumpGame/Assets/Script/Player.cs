@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public AudioClip audioFail;
     public TilesManager tiles;
     public SpriteRenderer body;
+    public bool bTestMode = true;
     public GameObject[] shiledOb;
     AudioSource audioSource;
     Rigidbody2D rb;
@@ -18,14 +19,15 @@ public class Player : MonoBehaviour
     Vector2 velo = Vector2.up * 5f;
     Color tileColor;
     int jumpCount = 0;
-    int maxJumpCount = 4;
+    public int maxJumpCount = 4;
     int score = 0;
     int useStar = 0;
     public int tilesIndex = 0;
     int AnimationPlayCount = 0;
     bool isMove;
-    bool die;
+    public bool die;
     public bool shiledTime;
+    public bool bIsFinish = false;
     bool randing;
     bool ishit;
     bool isReset;
@@ -50,8 +52,15 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (die) return;
+        if (die || bIsFinish) return;
 
+        if(1000<score)
+        {
+            bIsFinish = true;
+            return;
+        }
+            
+       
         if (isMove)
         {
             transform.position = Vector2.Lerp(transform.position, nextPos + Vector2.up, 0.1f);
@@ -99,8 +108,9 @@ public class Player : MonoBehaviour
         if (!PlayerData.instance.goCheckPoint)
             return;
 
-        score = 50;
-        Vector3 move = transform.position + (Vector3.up * 25f)*5;  //-2.5 + 20  = 18
+        int num = (PlayerData.instance.GetScore()) / 50;
+        score = 50*num;
+        Vector3 move = transform.position + (Vector3.up * 25f*num)*5;  //-2.5 + 20  = 18
         transform.position = move;
     }
 
@@ -119,7 +129,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (die) return;
+        if (die|| bIsFinish) return;
 
         if(isReset)
         {
@@ -179,7 +189,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (die ) return;
+        if (die||bIsFinish) return;
 
         if (isMove)
         {

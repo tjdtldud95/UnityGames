@@ -48,6 +48,13 @@ public class INGameCavas : MonoBehaviour
         }
         scoreInt.text = player.GetScore().ToString();
     }
+    public void ClearMode()
+    {
+        for(int i=0;i<5;i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
 
     public void SortClickImage()
     {

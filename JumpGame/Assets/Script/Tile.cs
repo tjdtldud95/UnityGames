@@ -41,9 +41,20 @@ public class Tile : MonoBehaviour
             shild = true;
             return;
         }
-        
-        /*
-        if(playerBody.color != TileSR.color)
+
+        if (player.bTestMode)
+        {
+            return;
+        }
+
+        if (player.bIsFinish)
+        {
+            Debug.Log("aab");
+            return;
+        }
+           
+
+        if (playerBody.color != TileSR.color)
         {
             var it = player.isShild();
             if(it.Item1)
@@ -56,7 +67,7 @@ public class Tile : MonoBehaviour
             player.SetHit(true);
             player.SetTileColor(TileSR.color);
         }
-        */
+        
     }
     
 

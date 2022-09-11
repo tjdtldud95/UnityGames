@@ -41,17 +41,9 @@ public class Tile : MonoBehaviour
             shild = true;
             return;
         }
-
-        if (player.bTestMode)
-        {
-            return;
-        }
-
         if (player.bIsFinish)
-        {
-            Debug.Log("aab");
             return;
-        }
+        
            
 
         if (playerBody.color != TileSR.color)

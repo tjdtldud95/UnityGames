@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        admob = GoogleAdmob.instance;
-        admob.StartInGameScean();
         audio = GetComponent<AudioSource>();
         audio.Stop();
         audio.Play();
@@ -90,7 +88,8 @@ public class GameManager : MonoBehaviour
             inGameCanvas.ClearMode();
             end = true;
             PlayerData.instance.goCheckPoint = false;
-            Invoke(nameof(GoToOutGameScean), 20f);
+            PlayerData.instance.isClear = true;
+           Invoke(nameof(GoToOutGameScean), 20f);
         }
     }
 

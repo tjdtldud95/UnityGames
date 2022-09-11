@@ -12,6 +12,7 @@ public class EndCanavas : MonoBehaviour
     public Image reason;
     public GameManager gameManager;
     public Sprite failSprite;
+    public GoogleAdmob admob;
     public Color[] dieColor;
 
     int score;
@@ -137,7 +138,7 @@ public class EndCanavas : MonoBehaviour
     
     public void WatchRewardAd()
     {
-        GoogleAdmob.instance.UserChoseToWatchAd();
+        admob.UserChoseToWatchAd();
     }
 
     public void ReStartGame()

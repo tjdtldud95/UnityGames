@@ -26,19 +26,28 @@ public class PlayerArray
     }
 }
 
-
 public class StartCanvas : MonoBehaviour
 {
-    public PlayerData data;
     public PlayerArray[] playerImage;
+    public TextMeshProUGUI[] ob;
+    public GameObject[] CheckPoint;
     private void Start()
     {
-        string score;
-        var ob = transform.Find("Score").GetComponent<TextMeshProUGUI>();
-        
-        score = data.GetScore().ToString();
+        if (PlayerData.instance.isClear)
+        {
+            transform.GetChild(1).gameObject.SetActive(true);
+        }
 
-        ob.text = score;
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+        string score;
+        score = PlayerData.instance.GetScore().ToString();
+        if(PlayerData.instance.isClear)
+            ob[1].text = score;
+        else
+            ob[0].text = score;
         OpenCharacter();
     }
 
@@ -112,6 +121,18 @@ public class StartCanvas : MonoBehaviour
             }
         }
 
+    }
+
+
+    public void OpenCheckPointimage()
+    {
+        int Countindex = PlayerData.instance.GetcheckPointCount();
+        int arrIndex = 0;
+        if (PlayerData.instance.isClear)
+            arrIndex = 1;
+        Debug.Log(Countindex);
+        Transform ob = CheckPoint[arrIndex].transform.GetChild(Countindex-1);
+        ob.gameObject.SetActive(true);
     }
 
 }

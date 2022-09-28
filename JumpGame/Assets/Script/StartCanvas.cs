@@ -131,7 +131,7 @@ public class StartCanvas : MonoBehaviour
         if (PlayerData.instance.isClear)
             arrIndex = 1;
         Debug.Log(Countindex);
-        Transform ob = CheckPoint[arrIndex].transform.GetChild(Countindex-1);
+        Transform ob = CheckPoint[arrIndex].transform.GetChild(Countindex);
         ob.gameObject.SetActive(true);
     }
 

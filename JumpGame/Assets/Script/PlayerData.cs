@@ -45,6 +45,14 @@ public class PlayerData : MonoBehaviour
 
     public int GetcheckPointCount()
     {
+        int returnValue = PlayerPrefs.GetInt("checkPointCount");
+        if (returnValue <= 6)
+        {
+            returnValue = 4;
+            PlayerPrefs.SetInt("checkPointCount", 4);
+            PlayerPrefs.Save();
+        }
+         
         return PlayerPrefs.GetInt("checkPointCount");
     }
     public int GetScore()

@@ -18,7 +18,7 @@ public class GoogleAdmob : MonoBehaviour
     {
         MobileAds.Initialize(initStatus => { });
         this.RequestReward();
-        this.RequestBanner();
+     //   this.RequestBanner();
     }
 
     public void StartInGameScean()
@@ -34,7 +34,7 @@ public class GoogleAdmob : MonoBehaviour
     {
         string adUnitId;
         #if UNITY_ANDROID
-                adUnitId = "ca-app-pub-3940256099942544/5224354917";
+                adUnitId = "ca-app-pub-3603232118127578/3618927919";
         #elif UNITY_IPHONE
                                     adUnitId = "ca-app-pub-3940256099942544/1712485313";
         #else

@@ -102,6 +102,13 @@ public class GameManager : MonoBehaviour
         if (!PlayerData.instance.goCheckPoint)
             return;
 
+
+        if (PlayerData.instance.GetScore() < 50)
+        {
+            end = false;
+            return;
+        }
+
         end = false;
         level = 3;
         inGameCanvas.InGameCavesLevelUP();

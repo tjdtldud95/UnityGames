@@ -45,4 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goCheckPoint: 0
   isClear: 0
-  checkPointCount: 5
+  checkPointCount: 0

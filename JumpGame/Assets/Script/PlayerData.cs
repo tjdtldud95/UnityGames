@@ -12,7 +12,7 @@ public class PlayerData : MonoBehaviour
     public int checkPointCount;
     int lostTime;
     int playingNum;
-    int maxScore;
+    public int maxScore;
     int usingShildNum;
 
     private void Awake()
@@ -35,9 +35,10 @@ public class PlayerData : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("maxScore") > score) return;
 
-        if (score <= 1000)
+        if (score >= 1000)
             score = 950;
 
+        Debug.Log(score);
         PlayerPrefs.SetInt("maxScore", score);
         PlayerPrefs.Save();
     }
@@ -112,7 +113,7 @@ public class PlayerData : MonoBehaviour
         if (PlayerPrefs.GetInt("checkPointCount") == 5)
             SetlostTime();
 
-        PlayerPrefs.SetInt("checkPointCount", checkPointCount-1);
+        PlayerPrefs.SetInt("checkPointCount", 0);
         PlayerPrefs.Save();
     }
 

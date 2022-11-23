@@ -60,7 +60,6 @@ public class TilesManager : MonoBehaviour
         if (!PlayerData.instance.goCheckPoint)
             return;
 
-
         int num = (PlayerData.instance.GetScore()) / 50;
         startTile.position += (Vector3.up * 25f*num) * 5;
         TilesPositioningForCheckPoint();
